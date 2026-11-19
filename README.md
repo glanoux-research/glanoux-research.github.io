@@ -8,7 +8,7 @@ English is the default language. Visitors can choose **Français** in the langua
 
 The biography draws on Gabriel's CV, his confirmed details, his public LinkedIn profile, and his [Deep Learning Lab profile](https://dllab.snu.ac.kr/m_professor/). His INSA Toulouse engineering degree is **in progress**; the site does not claim it has been awarded.
 
-The three project previews are illustrative and provisional. They do not run the complete local research systems. Their final selection and the site's visual design remain to be decided.
+The home page links to six project pages in `projects/`. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
 
 ## Comments
 
@@ -18,9 +18,24 @@ Visitor content is displayed inside giscus's iframe, not inserted into this site
 
 Some browsers or extensions may block third-party iframes. The page includes a direct link to the same GitHub Discussion so visitors can still read and post comments when the embed is unavailable. The embed itself cannot bypass a visitor's browser security settings.
 
-## Crawlers and demos
+## Design
 
-`robots.txt` asks cooperative crawlers to avoid `/demos/`, and each demo page has a `noindex` directive. These are voluntary directives and do not stop a crawler that ignores them. Actual access control would require hosting the demos behind authentication elsewhere.
+`assets/theme.css` holds the shared design tokens: colours for light and dark mode, IBM Plex fonts, and the navigation bar shown at the top of every project page. The home page layout is in `styles.css`.
+
+The project pages were first built as separate reports with their own styles. Each one keeps its layout and its data colours (routes, ships, wave heights, speed loss), but its neutral colours, accent and fonts are mapped onto the shared tokens by a `<style id="pf-map">` block at the end of the page. Changing a token in `theme.css` restyles the home page and all project pages at once. Card thumbnails are in `assets/thumbs/`.
+
+## Privacy of project data
+
+Project pages were checked for identifying information before publication:
+
+- AIS vessel identifiers (MMSI) in the English Channel animations are replaced by sequential numbers (`Ship #1`, `Ship #2`…), consistent across both days.
+- Lab server names, addresses, user names and internal paths were removed from the Isaac Sim pages.
+
+The original, non-pseudonymised versions are kept outside this repository and must not be added to it.
+
+## Crawlers
+
+`robots.txt` allows all crawlers. The project pages are meant to be found.
 
 ## Local preview
 
