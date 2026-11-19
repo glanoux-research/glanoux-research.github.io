@@ -8,7 +8,9 @@ const PUBLIC_CONTACTS = {
 const translations = {
   fr: {
     skip: 'Aller au contenu', navLabel: 'Navigation principale', languageLabel: 'Langue',
-    navProjects: 'Projets', navJourney: 'Parcours', navSkills: 'Compétences', navContact: 'Contact',
+    navProjects: 'Projets', navAbout: 'Parcours', navContact: 'Contact',
+    featuredTitle: 'Projets phares', featuredIntro: 'Trois comptes rendus interactifs, un pour chaque facette de mon travail : navigation des navires, robots qui apprennent et vol autonome.', allProjects: 'Les six projets →',
+    aboutTitle: 'Parcours et compétences',
     contactEmail: 'Email', contactTitle: 'Contact',
     contactPageIntro: 'Une question sur un projet, un stage ou un poste ? Écris-moi directement, ou laisse un commentaire public plus bas.',
     contactEmailDesc: 'Le plus adapté pour tout ce qui est privé : stages, postes, collaborations.',
@@ -53,7 +55,7 @@ const translations = {
     feedbackTitle: 'Commentaires', feedbackIntro: 'Lis les commentaires ci-dessous et ajoute le tien avec un compte GitHub. Les messages sont publics ; évite les informations personnelles ou confidentielles.',
     feedbackLabel: 'Commentaires GitHub', feedbackFallback: 'Si ton navigateur bloque le panneau, tu peux lire et publier dans le même fil sur GitHub :', feedbackFallbackLink: 'Ouvrir les commentaires sur GitHub',
     footer: 'Site statique · Français / English',
-    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets', titleContact: 'Gabriel Lanoux · Contact',
+    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Simulation, systèmes d’IA, robotique', titleProjects: 'Gabriel Lanoux · Projets', titleAbout: 'Gabriel Lanoux · Parcours et compétences', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Regroupées selon ce que mes projets utilisent, en commençant par ce qu’ils montrent.',
     skGroupSim: 'Simulation et robotique',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -79,7 +81,9 @@ const translations = {
   },
   en: {
     skip: 'Skip to content', navLabel: 'Main navigation', languageLabel: 'Language',
-    navProjects: 'Projects', navJourney: 'Journey', navSkills: 'Skills', navContact: 'Contact',
+    navProjects: 'Projects', navAbout: 'About', navContact: 'Contact',
+    featuredTitle: 'Featured projects', featuredIntro: 'Three interactive reports, one for each side of my work: ship navigation, learning robots and autonomous flight.', allProjects: 'All six projects →',
+    aboutTitle: 'Journey and skills',
     contactEmail: 'Email', contactTitle: 'Contact',
     contactPageIntro: 'A question about a project, an internship or a position? Write to me directly, or leave a public comment below.',
     contactEmailDesc: 'Best for anything private: internships, positions, collaborations.',
@@ -124,7 +128,7 @@ const translations = {
     feedbackTitle: 'Comments', feedbackIntro: 'Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.',
     feedbackLabel: 'GitHub comments', feedbackFallback: 'If the comment panel is blocked by your browser, you can still read and post in the same thread on GitHub:', feedbackFallbackLink: 'Open comments on GitHub',
     footer: 'Static site · English / Français',
-    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects', titleContact: 'Gabriel Lanoux · Contact',
+    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Simulation, AI systems, robotics', titleProjects: 'Gabriel Lanoux · Projects', titleAbout: 'Gabriel Lanoux · Journey and skills', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Grouped by what my projects use, starting with what they show.',
     skGroupSim: 'Simulation & robotics',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -151,8 +155,13 @@ const translations = {
 };
 
 const page = document.body.dataset.page;
-// Old links to the home-page comments section now go to the contact page.
-if (page === 'home' && location.hash === '#commentaires') location.replace('contact/#commentaires');
+// The site used to be a single page. Old links to its sections go to the new pages.
+const OLD_ANCHORS = {
+  '#projects': '/projects/', '#projets': '/projects/',
+  '#parcours': '/about/', '#competences': '/about/#competences', '#interets': '/about/#interets',
+  '#commentaires': '/contact/#commentaires'
+};
+if (page === 'home' && OLD_ANCHORS[location.hash]) location.replace(OLD_ANCHORS[location.hash]);
 let lang = 'en';
 try { if (localStorage.getItem('portfolio-lang') === 'fr') lang = 'fr'; } catch (e) { /* storage unavailable */ }
 
