@@ -2,12 +2,16 @@
 
 Site statique bilingue français / anglais. Aucun outil de compilation ni dépendance n'est requis.
 
-## Avant publication
+## État actuel
 
-1. Relire les informations biographiques et le parcours. La date de fin du cursus INSA n'est pas confirmée dans le CV fourni ; le site ne présente donc pas le diplôme comme acquis.
-2. Les coordonnées publiques validées sont `lanoux@snu.ac.kr`, le profil LinkedIn et le compte GitHub `glanoux-research`. Vérifier les liens avant publication.
-3. Choisir les démos définitives. Les trois aperçus actuels sont provisoires et distincts des applications et modèles locaux.
-4. Créer un dépôt public nommé `glanoux-research.github.io` sur le nouveau compte GitHub et y envoyer **uniquement le contenu de ce dossier**. Dans Settings → Pages, choisir « Deploy from a branch », branche `main`, dossier `/ (root)`.
+Le site est publié sur `https://glanoux-research.github.io/` depuis la branche `main` du dépôt `glanoux-research/glanoux-research.github.io`. Les coordonnées publiques ont été vérifiées. Le diplôme d'ingénieur INSA Toulouse est **en cours** ; aucune date d'obtention n'est annoncée.
+
+La biographie combine le CV fourni, les précisions du propriétaire et les informations publiques de son profil LinkedIn. Le profil indique des études à Seoul National University en 2026–2027 et évoque des cours d'optimisation GPU ainsi qu'un travail en laboratoire de deep learning.
+
+## À décider
+
+- Choisir les démos définitives. Les trois aperçus actuels sont provisoires et distincts des applications et modèles locaux.
+- Définir l'esthétique dans une étape ultérieure.
 
 ## Limite concernant les robots
 
