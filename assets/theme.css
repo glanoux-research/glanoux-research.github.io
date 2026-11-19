@@ -1,0 +1,90 @@
+/* Shared portfolio theme.
+   Loaded by the home page and by every project page in /projects/.
+   Project pages map their own variables onto these tokens (see the
+   <style id="pf-map"> block in each page), so one change here restyles all. */
+
+:root {
+  --pf-bg: #eef2f3;
+  --pf-surface: #f8fafa;
+  --pf-surface-2: #e3e9eb;
+  --pf-ink: #13212a;
+  --pf-ink-2: #3d5560;
+  --pf-muted: #667c86;
+  --pf-line: #cbd5d9;
+  --pf-line-soft: #dce3e6;
+  --pf-line-strong: #a9b8be;
+  --pf-accent: #0d6f79;
+  --pf-accent-ink: #0a5961;
+  --pf-accent-wash: #d6eaec;
+  --pf-accent-soft: #9fcdd2;
+  --pf-hot: #c4631a;
+  --pf-good: #2c7f4b;
+  --pf-warn: #a87708;
+  --pf-bad: #bf3a30;
+  --pf-shadow: 0 1px 2px rgba(19, 33, 42, .06), 0 10px 28px -14px rgba(19, 33, 42, .22);
+
+  --pf-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --pf-cond: "IBM Plex Sans Condensed", "IBM Plex Sans", "Arial Narrow", system-ui, sans-serif;
+  --pf-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+
+  --pf-radius: 10px;
+  --pf-bar-h: 44px;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --pf-bg: #0b151b;
+    --pf-surface: #111f27;
+    --pf-surface-2: #172a34;
+    --pf-ink: #dbe6ea;
+    --pf-ink-2: #a8bac2;
+    --pf-muted: #7a8f98;
+    --pf-line: #22363f;
+    --pf-line-soft: #1a2c35;
+    --pf-line-strong: #355059;
+    --pf-accent: #4fbfc9;
+    --pf-accent-ink: #8bd8df;
+    --pf-accent-wash: #12323a;
+    --pf-accent-soft: #2a6a72;
+    --pf-hot: #f0954a;
+    --pf-good: #58c27a;
+    --pf-warn: #e2b53b;
+    --pf-bad: #ec6a5f;
+    --pf-shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 12px 30px -14px rgba(0, 0, 0, .6);
+    color-scheme: dark;
+  }
+}
+
+/* Project-page navigation bar, injected at the top of each project page. */
+.pf-bar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  min-height: var(--pf-bar-h);
+  padding: 0 max(16px, calc((100vw - 72rem) / 2));
+  background: color-mix(in srgb, var(--pf-bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--pf-line);
+  font: 500 13px/1.3 var(--pf-sans);
+  color: var(--pf-ink-2);
+}
+.pf-bar a { color: var(--pf-ink); text-decoration: none; }
+.pf-bar a:hover { color: var(--pf-accent); }
+.pf-bar a:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; border-radius: 3px; }
+.pf-bar .pf-name { font: 600 14px/1 var(--pf-cond); letter-spacing: .01em; }
+.pf-bar .pf-sep { color: var(--pf-muted); }
+.pf-bar .pf-current { color: var(--pf-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+.pf-bar .pf-tag {
+  margin-left: auto;
+  flex: none;
+  font: 500 11px/1 var(--pf-mono);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--pf-accent);
+}
+@media (max-width: 560px) { .pf-bar .pf-tag { display: none; } }
