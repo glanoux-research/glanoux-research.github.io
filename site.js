@@ -8,7 +8,12 @@ const PUBLIC_CONTACTS = {
 const translations = {
   fr: {
     skip: 'Aller au contenu', navLabel: 'Navigation principale', languageLabel: 'Langue',
-    navProjects: 'Projets', navAbout: 'Parcours', navContact: 'Contact',
+    navProjects: 'Projets', navAbout: 'Parcours', navBlog: 'Blog', navContact: 'Contact',
+    portraitAlt: 'Portrait de Gabriel Lanoux',
+    blogTitle: 'Blog', blogIntro: 'Notes et photos de conférences et d’événements.',
+    symDate: '6 juillet 2026', symPlace: 'Oakwood Premier Coex Center, Séoul',
+    symText: 'Un symposium d’une demi-journée organisé par le Center for Trustworthy AI (CTAI) de Seoul National University. Le sujet : l’IA agentique, des systèmes qui planifient, raisonnent et agissent seuls sur de longues durées, et la façon de les rendre fiables, responsables et gouvernables. Deux sessions de conférences invitées, du monde académique et de l’industrie, chacune suivie d’une discussion :',
+    symAlt: 'Gabriel dans la salle du symposium, devant l’écran du Trustworthy & Responsible Agentic AI Symposium', symCap: 'Dans la salle Oak & Premier avant la première session.',
     featuredTitle: 'Projets phares', featuredIntro: 'Trois comptes rendus interactifs, un pour chaque facette de mon travail : navigation des navires, robots qui apprennent et vol autonome.', allProjects: 'Les six projets →',
     aboutTitle: 'Parcours et compétences',
     contactEmail: 'Email', contactTitle: 'Contact',
@@ -55,7 +60,7 @@ const translations = {
     feedbackTitle: 'Commentaires', feedbackIntro: 'Lis les commentaires ci-dessous et ajoute le tien avec un compte GitHub. Les messages sont publics ; évite les informations personnelles ou confidentielles.',
     feedbackLabel: 'Commentaires GitHub', feedbackFallback: 'Si ton navigateur bloque le panneau, tu peux lire et publier dans le même fil sur GitHub :', feedbackFallbackLink: 'Ouvrir les commentaires sur GitHub',
     footer: 'Site statique · Français / English',
-    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Simulation, systèmes d’IA, robotique', titleProjects: 'Gabriel Lanoux · Projets', titleAbout: 'Gabriel Lanoux · Parcours et compétences', titleContact: 'Gabriel Lanoux · Contact',
+    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Simulation, systèmes d’IA, robotique', titleProjects: 'Gabriel Lanoux · Projets', titleAbout: 'Gabriel Lanoux · Parcours et compétences', titleBlog: 'Gabriel Lanoux · Blog', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Regroupées selon ce que mes projets utilisent, en commençant par ce qu’ils montrent.',
     skGroupSim: 'Simulation et robotique',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -81,7 +86,12 @@ const translations = {
   },
   en: {
     skip: 'Skip to content', navLabel: 'Main navigation', languageLabel: 'Language',
-    navProjects: 'Projects', navAbout: 'About', navContact: 'Contact',
+    navProjects: 'Projects', navAbout: 'About', navBlog: 'Blog', navContact: 'Contact',
+    portraitAlt: 'Portrait of Gabriel Lanoux',
+    blogTitle: 'Blog', blogIntro: 'Notes and photos from conferences and events.',
+    symDate: '6 July 2026', symPlace: 'Oakwood Premier Coex Center, Seoul',
+    symText: 'A half-day symposium hosted by the Center for Trustworthy AI (CTAI) at Seoul National University. The topic: agentic AI, systems that plan, reason and act on their own over long horizons, and how to make them reliable, accountable and governable. Two sessions of invited talks from academia and industry, each followed by a discussion:',
+    symAlt: 'Gabriel in the symposium room, in front of the Trustworthy & Responsible Agentic AI Symposium screen', symCap: 'In the Oak & Premier Room before the first session.',
     featuredTitle: 'Featured projects', featuredIntro: 'Three interactive reports, one for each side of my work: ship navigation, learning robots and autonomous flight.', allProjects: 'All six projects →',
     aboutTitle: 'Journey and skills',
     contactEmail: 'Email', contactTitle: 'Contact',
@@ -128,7 +138,7 @@ const translations = {
     feedbackTitle: 'Comments', feedbackIntro: 'Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.',
     feedbackLabel: 'GitHub comments', feedbackFallback: 'If the comment panel is blocked by your browser, you can still read and post in the same thread on GitHub:', feedbackFallbackLink: 'Open comments on GitHub',
     footer: 'Static site · English / Français',
-    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Simulation, AI systems, robotics', titleProjects: 'Gabriel Lanoux · Projects', titleAbout: 'Gabriel Lanoux · Journey and skills', titleContact: 'Gabriel Lanoux · Contact',
+    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Simulation, AI systems, robotics', titleProjects: 'Gabriel Lanoux · Projects', titleAbout: 'Gabriel Lanoux · Journey and skills', titleBlog: 'Gabriel Lanoux · Blog', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Grouped by what my projects use, starting with what they show.',
     skGroupSim: 'Simulation & robotics',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -185,6 +195,7 @@ function render() {
   document.documentElement.lang = lang;
   document.title = t['title' + page[0].toUpperCase() + page.slice(1)];
   document.querySelectorAll('[data-i18n]').forEach(el => { if (t[el.dataset.i18n]) el.textContent = t[el.dataset.i18n]; });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el => { if (t[el.dataset.i18nAlt]) el.alt = t[el.dataset.i18nAlt]; });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { if (t[el.dataset.i18nAria]) el.setAttribute('aria-label', t[el.dataset.i18nAria]); });
   const selector = document.querySelector('[data-language-select]');
   selector.value = lang;

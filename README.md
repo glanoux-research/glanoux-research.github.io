@@ -8,18 +8,23 @@ English is the default language. Visitors can choose **Français** in the langua
 
 The biography draws on Gabriel's CV, his confirmed details, his public LinkedIn profile, and his [Deep Learning Lab profile](https://dllab.snu.ac.kr/m_professor/). His INSA Toulouse engineering degree is **in progress**; the site does not claim it has been awarded.
 
-The site has four pages:
+The site has five pages:
 
 | Page | Content |
 |---|---|
 | `/` | Introduction and three featured projects |
 | `/projects/` | All six project cards |
 | `/about/` | Journey, skills and interests |
+| `/blog/` | Notes and photos from conferences and events |
 | `/contact/` | Contact channels and the comments thread |
 
 The site used to be a single page. `site.js` sends old links to its sections (`/#projects`, `/#parcours`, `/#competences`, `/#commentaires`) to the matching new page. `sitemap.xml` lists every page for search engines.
 
 The projects page links to six project pages in `projects/`. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
+
+## Photos
+
+Photos in `assets/photos/` are resized and re-encoded without any metadata (no EXIF: no date, device or location). Faces of other people are blurred or cropped out before publishing.
 
 ## Comments
 
