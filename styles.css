@@ -98,14 +98,16 @@ main > section:first-child { border-top: 0; }
 .links a:hover { background: var(--pf-accent); color: var(--pf-bg); }
 
 /* Blog */
-.post { max-width: 56rem; padding-top: 1rem; }
+.post { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 20rem); gap: 2.5rem; align-items: start; padding-top: 1rem; }
 .post h2 { margin-bottom: .6rem; }
-.post > p:not(.meta) { color: var(--pf-ink-2); max-width: 46rem; }
 .post .meta { margin: 0 0 .4rem; }
-.post-photos { display: grid; grid-template-columns: 16fr 9fr; gap: 1rem; margin-top: 1.4rem; align-items: start; }
-.post-photos figure { margin: 0; }
-.post-photos img { width: 100%; border-radius: var(--pf-radius); border: 1px solid var(--pf-line); background: var(--pf-surface-2); }
-.post-photos figcaption { font-size: .85rem; color: var(--pf-muted); margin-top: .45rem; }
+.post-body > p:not(.meta) { color: var(--pf-ink-2); }
+.talks { margin: .4rem 0 0; padding-left: 1.1rem; color: var(--pf-ink-2); }
+.talks li { margin-bottom: .45rem; }
+.talks strong { color: var(--pf-ink); font-weight: 600; }
+.post-photo { margin: 0; }
+.post-photo img { width: 100%; border-radius: var(--pf-radius); border: 1px solid var(--pf-line); background: var(--pf-surface-2); }
+.post-photo figcaption { font-size: .85rem; color: var(--pf-muted); margin-top: .45rem; }
 
 /* Journey */
 .timeline { list-style: none; margin: 0; padding: 0 0 0 1.6rem; border-left: 2px solid var(--pf-line); max-width: 50rem; }
@@ -160,7 +162,8 @@ nav > a[aria-current="page"] { color: var(--pf-accent); }
   main > section { padding: 3rem 0; }
   .hero-side { grid-template-columns: 1fr; }
   .portrait { max-width: 12rem; }
-  .post-photos { grid-template-columns: 1fr; }
+  .post { grid-template-columns: 1fr; gap: 1.4rem; }
+  .post-photo { max-width: 22rem; }
 }
 @media (prefers-reduced-motion: reduce) {
   .project, .thumb img { transition: none; }
