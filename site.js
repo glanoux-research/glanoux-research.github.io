@@ -8,7 +8,7 @@ const PUBLIC_CONTACTS = {
 const translations = {
   fr: {
     skip: 'Aller au contenu', brand: 'Portfolio', navLabel: 'Navigation principale',
-    navJourney: 'Parcours', navInterests: 'Intérêts', navSkills: 'Compétences', navDemos: 'Démos', navContact: 'Contacts',
+    navJourney: 'Parcours', navInterests: 'Intérêts', navSkills: 'Compétences', navFeedback: 'Commentaires', navDemos: 'Démos', navContact: 'Contacts',
     contactIntro: 'Retrouve-moi sur ces canaux publics.', contactEmail: 'Email',
     demoTwinShort: 'Jumeau numérique maritime', demoRagShort: 'Recherche documentaire RAG',
     demoRobotShort: 'Robotique', allProjects: 'Tous les projets',
@@ -33,6 +33,8 @@ const translations = {
     ragCard: 'Suivre les étapes d’une recherche dans un petit corpus fictif et voir comment une réponse citerait ses sources.',
     robotCard: 'Explorer le déphasage d’une démarche en boucle ouverte sur une représentation simplifiée de robot.',
     openDemo: 'Ouvrir la démo', footer: 'Portfolio en cours de préparation · Français / English',
+    feedbackTitle: 'Commentaires', feedbackIntro: 'Lis les commentaires ci-dessous et ajoute le tien avec un compte GitHub. Les messages sont publics ; évite les informations personnelles ou confidentielles.',
+    feedbackLabel: 'Commentaires GitHub', feedbackNote: 'Les commentaires sont hébergés par GitHub Discussions et modérables sur GitHub. Le chargement du module peut prendre quelques secondes.',
     backProjects: 'Retour aux projets', demoLabel: 'Aperçu interactif simplifié',
     twinIntro: 'Le projet local synchronise une simulation de navire avec un jumeau et présente une estimation de performance. Ici, modifiez deux paramètres pour comprendre le principe ; les nombres ne proviennent pas du modèle réel.',
     speed: 'Vitesse (nœuds)', fouling: 'Encrassement de coque (%)', twinNote: 'Illustration pédagogique : formule arbitraire, sans valeur de prédiction opérationnelle.',
@@ -50,7 +52,7 @@ const translations = {
   },
   en: {
     skip: 'Skip to content', brand: 'Portfolio', navLabel: 'Main navigation',
-    navJourney: 'Journey', navInterests: 'Interests', navSkills: 'Skills', navDemos: 'Demos', navContact: 'Contact',
+    navJourney: 'Journey', navInterests: 'Interests', navSkills: 'Skills', navFeedback: 'Feedback', navDemos: 'Demos', navContact: 'Contact',
     contactIntro: 'Find me on these public channels.', contactEmail: 'Email',
     demoTwinShort: 'Maritime digital twin', demoRagShort: 'RAG document search',
     demoRobotShort: 'Robotics', allProjects: 'All projects',
@@ -75,6 +77,8 @@ const translations = {
     ragCard: 'Follow a search in a small fictional corpus and see how an answer could cite its sources.',
     robotCard: 'Explore phase offsets in an open loop gait using a simplified robot representation.',
     openDemo: 'Open demo', footer: 'Portfolio in preparation · Français / English',
+    feedbackTitle: 'Comments', feedbackIntro: 'Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.',
+    feedbackLabel: 'GitHub comments', feedbackNote: 'Comments are hosted by GitHub Discussions and can be moderated there. The widget may take a few seconds to load.',
     backProjects: 'Back to projects', demoLabel: 'Simplified interactive preview',
     twinIntro: 'The local project synchronizes a ship simulation with a digital twin and displays a performance estimate. Change two parameters to understand the idea; these numbers do not come from the actual model.',
     speed: 'Speed (knots)', fouling: 'Hull fouling (%)', twinNote: 'Educational illustration: arbitrary formula with no operational predictive value.',
@@ -157,6 +161,31 @@ function render() {
   renderTwin(t);
   renderRag(t);
   renderRobot(t);
+  const frame = document.querySelector('iframe.giscus-frame');
+  frame?.contentWindow?.postMessage({ giscus: { setConfig: { lang } } }, 'https://giscus.app');
+}
+
+function initComments() {
+  if (page !== 'home') return;
+  const script = document.createElement('script');
+  script.src = 'https://giscus.app/client.js';
+  script.async = true;
+  script.crossOrigin = 'anonymous';
+  Object.assign(script.dataset, {
+    repo: 'glanoux-research/glanoux-research.github.io',
+    repoId: 'R_kgDOV0DCpQ',
+    category: 'Announcements',
+    categoryId: 'DIC_kwDOV0DCpc4DLe1u',
+    mapping: 'number',
+    term: '1',
+    strict: '1',
+    reactionsEnabled: '0',
+    emitMetadata: '0',
+    inputPosition: 'top',
+    theme: 'light',
+    lang
+  });
+  document.getElementById('comments-widget').append(script);
 }
 
 document.querySelector('[data-lang-toggle]').addEventListener('click', () => {
@@ -168,3 +197,4 @@ for (const id of ['speed', 'fouling', 'phase', 'rag-select']) {
   document.getElementById(id)?.addEventListener('input', render);
 }
 render();
+initComments();
