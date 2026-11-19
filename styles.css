@@ -117,8 +117,11 @@ main > section:first-child { border-top: 0; }
 .timeline p { color: var(--pf-ink-2); margin: .2rem 0 .3rem; }
 
 /* Skills and interests */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-.two-col h2 { margin-bottom: 1.2rem; }
+.skill-groups { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr)); gap: 1rem; }
+.skill-group { background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); padding: 1.1rem 1.2rem 1.2rem; }
+.skill-group h3, .interests h3 { font: 500 .74rem/1.4 var(--pf-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--pf-accent); margin: 0 0 .8rem; }
+.skill-group .chips li { background: var(--pf-bg); }
+.interests { margin-top: 2.2rem; }
 .chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: .5rem; }
 .chips li { padding: .4rem .75rem; border: 1px solid var(--pf-line); border-radius: 999px; background: var(--pf-surface); font-size: .92rem; }
 
@@ -132,8 +135,7 @@ main > section:first-child { border-top: 0; }
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
-  .project-grid, .two-col { grid-template-columns: 1fr; }
-  .two-col { gap: 2.5rem; }
+  .project-grid { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .header-inner { flex-wrap: wrap; gap: .6rem 1rem; }
