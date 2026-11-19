@@ -16,6 +16,8 @@ The home page embeds [giscus](https://giscus.app/) and displays a dedicated [Git
 
 Visitor content is displayed inside giscus's iframe, not inserted into this site's DOM. The `giscus.json` file restricts embedding to the production origin. The giscus GitHub App is installed only for this repository and has access to its Discussions. This setup relies on GitHub and giscus for authentication and comment rendering; it does not provide a guarantee against every security issue in those services.
 
+Some browsers or extensions may block third-party iframes. The page includes a direct link to the same GitHub Discussion so visitors can still read and post comments when the embed is unavailable. The embed itself cannot bypass a visitor's browser security settings.
+
 ## Crawlers and demos
 
 `robots.txt` asks cooperative crawlers to avoid `/demos/`, and each demo page has a `noindex` directive. These are voluntary directives and do not stop a crawler that ignores them. Actual access control would require hosting the demos behind authentication elsewhere.
