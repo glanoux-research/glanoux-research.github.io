@@ -12,7 +12,7 @@ The home page links to six project pages in `projects/`. Each one is a self-cont
 
 ## Comments
 
-The home page embeds [giscus](https://giscus.app/) and displays a dedicated [GitHub Discussion](https://github.com/glanoux-research/glanoux-research.github.io/discussions/1). Visitors can read comments on the page and sign in with GitHub to post. Comments are public and can be moderated in GitHub Discussions.
+The contact page (`/contact/`) lists the public contact channels and embeds [giscus](https://giscus.app/) and displays a dedicated [GitHub Discussion](https://github.com/glanoux-research/glanoux-research.github.io/discussions/1). Visitors can read comments on the page and sign in with GitHub to post. Comments are public and can be moderated in GitHub Discussions.
 
 Visitor content is displayed inside giscus's iframe, not inserted into this site's DOM. The `giscus.json` file restricts embedding to the production origin. The giscus GitHub App is installed only for this repository and has access to its Discussions. This setup relies on GitHub and giscus for authentication and comment rendering; it does not provide a guarantee against every security issue in those services.
 

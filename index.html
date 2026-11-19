@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Gabriel Lanoux: dual-degree studies at INSA Toulouse and Seoul National University. Research on cyber-physical ship navigation, simulation, robotics and machine learning.">
+  <meta name="description" content="Gabriel Lanoux: simulation, AI systems and robotics. Dual-degree student at INSA Toulouse and Seoul National University, building a cyber-physical ship navigation testbed.">
   <meta name="theme-color" content="#eef2f3" media="(prefers-color-scheme: light)">
   <meta name="theme-color" content="#0b151b" media="(prefers-color-scheme: dark)">
   <meta property="og:title" content="Gabriel Lanoux · Journey and projects">
@@ -26,21 +26,10 @@
     <div class="header-inner">
       <a class="brand" href="./">Gabriel Lanoux</a>
       <nav aria-label="Main navigation" data-i18n-aria="navLabel">
-        <a href="#projets" data-i18n="navProjects">Projects</a>
+        <a href="#projects" data-i18n="navProjects">Projects</a>
         <a href="#parcours" data-i18n="navJourney">Journey</a>
         <a href="#competences" data-i18n="navSkills">Skills</a>
-        <a href="#commentaires" data-i18n="navFeedback">Comments</a>
-        <details class="nav-menu">
-          <summary data-i18n="navContact">Contact</summary>
-          <div class="menu-panel contact-menu">
-            <p data-i18n="contactIntro">Find me on these public channels.</p>
-            <dl>
-              <dt data-i18n="contactEmail">Email</dt><dd data-contact="email">—</dd>
-              <dt>GitHub</dt><dd data-contact="github">—</dd>
-              <dt>LinkedIn</dt><dd data-contact="linkedin">—</dd>
-            </dl>
-          </div>
-        </details>
+        <a href="contact/" data-i18n="navContact">Contact</a>
       </nav>
       <label class="lang-control"><span class="visually-hidden" data-i18n="languageLabel">Language</span><select data-language-select aria-label="Language"><option value="en">EN</option><option value="fr">FR</option></select></label>
     </div>
@@ -49,12 +38,12 @@
   <main id="main">
     <section class="hero" aria-labelledby="intro-title">
       <div class="hero-text">
-        <p class="eyebrow" data-i18n="eyebrow">Cybersecurity · Simulation · Applied research</p>
+        <p class="eyebrow" data-i18n="eyebrow">Simulation · AI systems · Robotics</p>
         <h1 id="intro-title" data-i18n="introTitle">Hello, I’m Gabriel Lanoux.</h1>
-        <p class="lead" data-i18n="introLead">I am pursuing a dual-degree program in computer science and networks between INSA Toulouse and Seoul National University. My engineering degree is still in progress.</p>
-        <p data-i18n="introBody">At SNU’s Deep Learning Lab, I explore the intersection of cybersecurity, machine learning, and computing system optimization. My current research is a maritime navigation testbed: ship simulation, collision avoidance, and the effects of attacks on NMEA/AIS data.</p>
+        <p class="lead" data-i18n="introLead">I build and run complex systems — ship simulations, learning robots, GPU compute — and I know how to secure them.</p>
+        <p data-i18n="introBody">I am a dual-degree student in computer science and networks between INSA Toulouse and Seoul National University; my engineering degree is in progress. At SNU’s Deep Learning Lab, my thesis builds a ship-navigation testbed that measures what attacks on navigation data, and the automatic responses to them, actually do to the ship.</p>
         <div class="hero-actions">
-          <a class="button primary" href="#projets" data-i18n="explore">Explore projects</a>
+          <a class="button primary" href="#projects" data-i18n="explore">Explore projects</a>
           <a class="button" href="https://github.com/glanoux-research" target="_blank" rel="noopener noreferrer">GitHub</a>
           <a class="button" href="https://www.linkedin.com/in/gabriel-lanoux-05a367228/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
         </div>
@@ -69,7 +58,8 @@
       </aside>
     </section>
 
-    <section id="projets" aria-labelledby="projects-title">
+    <section id="projects" aria-labelledby="projects-title">
+      <span id="projets" class="anchor-alias" aria-hidden="true"></span>
       <div class="section-head">
         <h2 id="projects-title" data-i18n="projectsTitle">Projects</h2>
         <p data-i18n="projectsIntro">Each page is an interactive report from a real project: simulations, trained policies and flight logs replayed in the browser. Vessel identifiers in AIS data are pseudonymised.</p>
@@ -137,27 +127,28 @@
       </div>
       <ol class="timeline">
         <li><h3 data-i18n="journeySnuTitle">2026–2027 · Deep Learning Lab, Seoul National University</h3><p data-i18n="journeySnuText">Dual-degree studies at SNU in the Deep Learning Lab of the Department of Naval Architecture and Ocean Engineering. My research interests include cybersecurity with machine learning, LLM and deep learning architecture optimization, and implementation on hardware and edge devices.</p><a href="https://dllab.snu.ac.kr/" target="_blank" rel="noopener noreferrer" data-i18n="labLink">Explore the lab</a></li>
-        <li><h3 data-i18n="journeyNowTitle">Current research · maritime navigation</h3><p data-i18n="journeyNowText">A testbed combining a ship manoeuvring model, collision avoidance, and attacks on NMEA/AIS data. The aim is to compare intrusion detectors through their effects on the mission.</p></li>
-        <li><h3 data-i18n="journeyInternshipTitle">2025 · network cybersecurity internship</h3><p data-i18n="journeyInternshipText">At Caisse de Prévoyance Sociale in Papeete: front office network segmentation, equipment migration, and configuration of associated servers.</p></li>
+        <li><h3 data-i18n="journeyNowTitle">Current research · maritime navigation</h3><p data-i18n="journeyNowText">A testbed linking a ship manoeuvring model, collision avoidance and attacks on the NMEA/AIS data path. The question: when does an automatic response to a navigation-data alarm make the ship safer, and when does it put it at risk?</p></li>
+        <li><h3 data-i18n="journeyInternshipTitle">2025 · network and system administration internship</h3><p data-i18n="journeyInternshipText">At Caisse de Prévoyance Sociale in Papeete: segmentation of the front-office network, equipment migration, server configuration, and network monitoring.</p></li>
         <li><h3 data-i18n="journeyAcademicTitle">2025 · academic projects</h3><p data-i18n="journeyAcademicText">Development of an FPGA Ethernet card and a study of hardware acceleration for post-quantum cryptography at INSA Toulouse.</p></li>
         <li><h3 data-i18n="journeyExchangeTitle">2023–2024 · university exchange</h3><p data-i18n="journeyExchangeText">Exchange semester at Université Laval in Québec City.</p></li>
         <li><h3 data-i18n="journeyEducationTitle">Degree in progress · INSA Toulouse</h3><p data-i18n="journeyEducationText">Engineering degree in computer science and networks in progress, specializing in network cybersecurity.</p></li>
       </ol>
     </section>
 
-    <section id="competences" class="two-col" aria-labelledby="skills-title">
-      <div>
-        <h2 id="skills-title" data-i18n="skillsTitle">Skills and languages</h2>
-        <ul class="chips">
-          <li data-i18n="skillNetworks">Networks: TCP/IP, VPN, routing, DNS, segmentation</li>
-          <li data-i18n="skillSecurity">Security: firewalls, encryption, network analysis</li>
-          <li data-i18n="skillCode">Development: Python, C/C++, Java, SQL</li>
-          <li data-i18n="skillTools">Tools: Wireshark, Git, VHDL, LaTeX</li>
-          <li data-i18n="skillLanguages">Native French · fluent English</li>
-        </ul>
+    <section id="competences" aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title" data-i18n="skillsTitle">Skills</h2>
+        <p data-i18n="skillsIntro">Grouped by what my projects use, starting with what they show.</p>
       </div>
-      <div id="interets">
-        <h2 data-i18n="interestsTitle">My interests</h2>
+      <div class="skill-groups">
+        <div class="skill-group"><h3 data-i18n="skGroupSim">Simulation & robotics</h3><ul class="chips"><li data-i18n="skSim1">Isaac Sim, Gazebo, PX4 (software in the loop)</li><li data-i18n="skSim2">Ship manoeuvring models (MMG)</li><li data-i18n="skSim3">Collision avoidance (SB-MPC)</li></ul></div>
+        <div class="skill-group"><h3 data-i18n="skGroupAI">AI / ML</h3><ul class="chips"><li data-i18n="skAI1">Reinforcement learning in simulation (Stable-Baselines3)</li><li data-i18n="skAI2">Local LLM inference (Ollama)</li></ul></div>
+        <div class="skill-group"><h3 data-i18n="skGroupSys">Systems & networks</h3><ul class="chips"><li data-i18n="skSys1">Linux, shared GPU server (Docker, Slurm)</li><li data-i18n="skSys2">TCP/IP, routing, network segmentation</li><li data-i18n="skSys3">Network monitoring, equipment migration</li></ul></div>
+        <div class="skill-group"><h3 data-i18n="skGroupSec">Security</h3><ul class="chips"><li data-i18n="skSec1">Network analysis (Wireshark), firewalls</li><li data-i18n="skSec2">Intrusion detection</li><li data-i18n="skSec3">NMEA/AIS attack surfaces</li></ul></div>
+        <div class="skill-group"><h3 data-i18n="skGroupLang">Languages</h3><ul class="chips"><li data-i18n="skLang1">Python</li><li data-i18n="skLang2">C/C++</li><li data-i18n="skLang3">VHDL</li><li data-i18n="skLang4">SQL</li><li data-i18n="skLang5">Java</li></ul></div>
+      </div>
+      <div id="interets" class="interests">
+        <h3 data-i18n="interestsTitle">Interests</h3>
         <ul class="chips">
           <li data-i18n="interestAI">Language models and AI architecture optimization</li>
           <li data-i18n="interestRobotics">Robotics and simulation</li>
@@ -167,14 +158,6 @@
       </div>
     </section>
 
-    <section id="commentaires" aria-labelledby="feedback-title">
-      <div class="section-head">
-        <h2 id="feedback-title" data-i18n="feedbackTitle">Comments</h2>
-        <p data-i18n="feedbackIntro">Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.</p>
-      </div>
-      <div class="giscus" id="comments-widget" aria-label="GitHub comments" data-i18n-aria="feedbackLabel"></div>
-      <p class="note"><span data-i18n="feedbackFallback">If the comment panel is blocked by your browser, you can still read and post in the same thread on GitHub:</span> <a href="https://github.com/glanoux-research/glanoux-research.github.io/discussions/1" target="_blank" rel="noopener noreferrer" data-i18n="feedbackFallbackLink">Open comments on GitHub</a></p>
-    </section>
   </main>
   <footer class="site-footer">
     <p><span>© 2026 Gabriel Lanoux</span> · <span data-i18n="footer">Static site · English / Français</span></p>

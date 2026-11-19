@@ -1,6 +1,6 @@
 // Renseigner uniquement les coordonnées que vous souhaitez rendre publiques.
 const PUBLIC_CONTACTS = {
-  email: 'lanoux@snu.ac.kr',
+  email: 'gabriel.lanoux.research@gmail.com',
   github: 'https://github.com/glanoux-research',
   linkedin: 'https://www.linkedin.com/in/gabriel-lanoux-05a367228/'
 };
@@ -8,11 +8,15 @@ const PUBLIC_CONTACTS = {
 const translations = {
   fr: {
     skip: 'Aller au contenu', navLabel: 'Navigation principale', languageLabel: 'Langue',
-    navProjects: 'Projets', navJourney: 'Parcours', navSkills: 'Compétences', navFeedback: 'Commentaires', navContact: 'Contacts',
-    contactIntro: 'Retrouve-moi sur ces canaux publics.', contactEmail: 'Email',
-    eyebrow: 'Cybersécurité · Simulation · Recherche appliquée', introTitle: 'Bonjour, je suis Gabriel Lanoux.',
-    introLead: 'Je poursuis un double diplôme en informatique et réseaux entre l’INSA Toulouse et Seoul National University. Mon diplôme d’ingénieur est en cours.',
-    introBody: 'Au Deep Learning Lab de SNU, j’explore la rencontre entre cybersécurité, apprentissage automatique et optimisation des systèmes de calcul. Ma recherche actuelle porte sur un banc d’essai de navigation maritime : simulation d’un navire, évitement de collisions et effets d’attaques sur les données NMEA/AIS.',
+    navProjects: 'Projets', navJourney: 'Parcours', navSkills: 'Compétences', navContact: 'Contact',
+    contactEmail: 'Email', contactTitle: 'Contact',
+    contactPageIntro: 'Une question sur un projet, un stage ou un poste ? Écris-moi directement, ou laisse un commentaire public plus bas.',
+    contactEmailDesc: 'Le plus adapté pour tout ce qui est privé : stages, postes, collaborations.',
+    contactGithubDesc: 'Le code, et la source de ce site.',
+    contactLinkedinDesc: 'Parcours et messages professionnels.',
+    eyebrow: 'Simulation · Systèmes d’IA · Robotique', introTitle: 'Bonjour, je suis Gabriel Lanoux.',
+    introLead: 'Je conçois et fais tourner des systèmes complexes — simulations de navires, robots qui apprennent, calcul GPU — et je sais les sécuriser.',
+    introBody: 'Je suis en double diplôme en informatique et réseaux entre l’INSA Toulouse et Seoul National University ; mon diplôme d’ingénieur est en cours. Au Deep Learning Lab de SNU, mon mémoire construit un banc d’essai de navigation qui mesure ce que les attaques sur les données de navigation, et les réponses automatiques à ces attaques, font réellement au navire.',
     explore: 'Explorer les projets',
     factsLabel: 'En bref', factNowLabel: 'Actuellement', factNow: 'Deep Learning Lab, Seoul National University',
     factThesisLabel: 'Mémoire', factThesis: 'Banc d’essai cyber-physique pour la navigation des navires',
@@ -38,28 +42,52 @@ const translations = {
     journeyTitle: 'Mon parcours',
     journeyIntro: 'De la cybersécurité des réseaux aux systèmes physiques et à l’IA, mon parcours relie infrastructure, simulation et recherche expérimentale.',
     journeySnuTitle: '2026–2027 · Deep Learning Lab, Seoul National University', journeySnuText: 'Parcours de double diplôme à SNU, au sein du Deep Learning Lab du département de génie naval et océanique. Mes intérêts de recherche portent sur la cybersécurité avec l’apprentissage automatique, l’optimisation des architectures LLM et deep learning, et la mise en œuvre sur matériel et en périphérie.', labLink: 'Découvrir le laboratoire',
-    journeyNowTitle: 'Recherche actuelle · navigation maritime', journeyNowText: 'Banc d’essai associant un modèle de manœuvre de navire, l’évitement de collisions et l’étude d’attaques sur les données NMEA/AIS. L’objectif est de comparer les détecteurs d’intrusion à leurs effets sur la mission.',
-    journeyInternshipTitle: '2025 · stage en cybersécurité réseau', journeyInternshipText: 'À la Caisse de Prévoyance Sociale de Papeete : segmentation du réseau du front office, migration d’équipements et configuration des serveurs associés.',
+    journeyNowTitle: 'Recherche actuelle · navigation maritime', journeyNowText: 'Un banc d’essai reliant un modèle de manœuvre de navire, l’évitement de collisions et des attaques sur la chaîne de données NMEA/AIS. La question : quand une réponse automatique à une alarme sur les données de navigation rend-elle le navire plus sûr, et quand le met-elle en danger ?',
+    journeyInternshipTitle: '2025 · stage en administration systèmes et réseaux', journeyInternshipText: 'À la Caisse de Prévoyance Sociale de Papeete : segmentation du réseau du front office, migration d’équipements, configuration de serveurs et supervision réseau.',
     journeyAcademicTitle: '2025 · projets académiques', journeyAcademicText: 'Développement d’une carte Ethernet sur FPGA et étude de l’accélération matérielle d’un chiffrement post-quantique à l’INSA Toulouse.',
     journeyExchangeTitle: '2023–2024 · échange universitaire', journeyExchangeText: 'Semestre d’échange à l’Université Laval, à Québec.',
     journeyEducationTitle: 'Diplôme en cours · INSA Toulouse', journeyEducationText: 'Diplôme d’ingénieur en informatique et réseaux en cours, spécialité cybersécurité orientée réseau.',
-    skillsTitle: 'Compétences et langues', skillNetworks: 'Réseaux : TCP/IP, VPN, routage, DNS, segmentation',
-    skillSecurity: 'Sécurité : pare-feux, chiffrement, analyse réseau', skillCode: 'Développement : Python, C/C++, Java, SQL',
-    skillTools: 'Outils : Wireshark, Git, VHDL, LaTeX', skillLanguages: 'Français natif · anglais courant',
-    interestsTitle: 'Mes intérêts', interestAI: 'Modèles de langage et optimisation des architectures IA', interestRobotics: 'Robotique et simulation',
+    skillsTitle: 'Compétences',
+    interestsTitle: 'Intérêts', interestAI: 'Modèles de langage et optimisation des architectures IA', interestRobotics: 'Robotique et simulation',
     interestSecurity: 'Cybersécurité et apprentissage automatique', interestResearch: 'Co-conception algorithmes et matériel, calcul en périphérie',
     feedbackTitle: 'Commentaires', feedbackIntro: 'Lis les commentaires ci-dessous et ajoute le tien avec un compte GitHub. Les messages sont publics ; évite les informations personnelles ou confidentielles.',
     feedbackLabel: 'Commentaires GitHub', feedbackFallback: 'Si ton navigateur bloque le panneau, tu peux lire et publier dans le même fil sur GitHub :', feedbackFallbackLink: 'Ouvrir les commentaires sur GitHub',
     footer: 'Site statique · Français / English',
-    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets'
+    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets', titleContact: 'Gabriel Lanoux · Contact',
+    skillsIntro: 'Regroupées selon ce que mes projets utilisent, en commençant par ce qu’ils montrent.',
+    skGroupSim: 'Simulation et robotique',
+    skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
+    skSim2: 'Modèles de manœuvre de navire (MMG)',
+    skSim3: 'Évitement de collision (SB-MPC)',
+    skGroupAI: 'IA / ML',
+    skAI1: 'Apprentissage par renforcement en simulation (Stable-Baselines3)',
+    skAI2: 'Inférence de LLM en local (Ollama)',
+    skGroupSys: 'Systèmes et réseaux',
+    skSys1: 'Linux, serveur GPU partagé (Docker, Slurm)',
+    skSys2: 'TCP/IP, routage, segmentation réseau',
+    skSys3: 'Supervision réseau, migration d’équipements',
+    skGroupSec: 'Sécurité',
+    skSec1: 'Analyse réseau (Wireshark), pare-feux',
+    skSec2: 'Détection d’intrusion',
+    skSec3: 'Surfaces d’attaque NMEA/AIS',
+    skGroupLang: 'Langages',
+    skLang1: 'Python',
+    skLang2: 'C/C++',
+    skLang3: 'VHDL',
+    skLang4: 'SQL',
+    skLang5: 'Java'
   },
   en: {
     skip: 'Skip to content', navLabel: 'Main navigation', languageLabel: 'Language',
-    navProjects: 'Projects', navJourney: 'Journey', navSkills: 'Skills', navFeedback: 'Comments', navContact: 'Contact',
-    contactIntro: 'Find me on these public channels.', contactEmail: 'Email',
-    eyebrow: 'Cybersecurity · Simulation · Applied research', introTitle: 'Hello, I’m Gabriel Lanoux.',
-    introLead: 'I am pursuing a dual-degree program in computer science and networks between INSA Toulouse and Seoul National University. My engineering degree is still in progress.',
-    introBody: 'At SNU’s Deep Learning Lab, I explore the intersection of cybersecurity, machine learning, and computing system optimization. My current research is a maritime navigation testbed: ship simulation, collision avoidance, and the effects of attacks on NMEA/AIS data.',
+    navProjects: 'Projects', navJourney: 'Journey', navSkills: 'Skills', navContact: 'Contact',
+    contactEmail: 'Email', contactTitle: 'Contact',
+    contactPageIntro: 'A question about a project, an internship or a position? Write to me directly, or leave a public comment below.',
+    contactEmailDesc: 'Best for anything private: internships, positions, collaborations.',
+    contactGithubDesc: 'Code and the source of this site.',
+    contactLinkedinDesc: 'Background and professional messages.',
+    eyebrow: 'Simulation · AI systems · Robotics', introTitle: 'Hello, I’m Gabriel Lanoux.',
+    introLead: 'I build and run complex systems — ship simulations, learning robots, GPU compute — and I know how to secure them.',
+    introBody: 'I am a dual-degree student in computer science and networks between INSA Toulouse and Seoul National University; my engineering degree is in progress. At SNU’s Deep Learning Lab, my thesis builds a ship-navigation testbed that measures what attacks on navigation data, and the automatic responses to them, actually do to the ship.',
     explore: 'Explore projects',
     factsLabel: 'At a glance', factNowLabel: 'Now', factNow: 'Deep Learning Lab, Seoul National University',
     factThesisLabel: 'Thesis', factThesis: 'Cyber-physical ship navigation testbed',
@@ -85,24 +113,46 @@ const translations = {
     journeyTitle: 'My journey',
     journeyIntro: 'From network cybersecurity to physical systems and AI, my path connects infrastructure, simulation, and experimental research.',
     journeySnuTitle: '2026–2027 · Deep Learning Lab, Seoul National University', journeySnuText: 'Dual-degree studies at SNU in the Deep Learning Lab of the Department of Naval Architecture and Ocean Engineering. My research interests include cybersecurity with machine learning, LLM and deep learning architecture optimization, and implementation on hardware and edge devices.', labLink: 'Explore the lab',
-    journeyNowTitle: 'Current research · maritime navigation', journeyNowText: 'A testbed combining a ship manoeuvring model, collision avoidance, and attacks on NMEA/AIS data. The aim is to compare intrusion detectors through their effects on the mission.',
-    journeyInternshipTitle: '2025 · network cybersecurity internship', journeyInternshipText: 'At Caisse de Prévoyance Sociale in Papeete: front office network segmentation, equipment migration, and configuration of associated servers.',
+    journeyNowTitle: 'Current research · maritime navigation', journeyNowText: 'A testbed linking a ship manoeuvring model, collision avoidance and attacks on the NMEA/AIS data path. The question: when does an automatic response to a navigation-data alarm make the ship safer, and when does it put it at risk?',
+    journeyInternshipTitle: '2025 · network and system administration internship', journeyInternshipText: 'At Caisse de Prévoyance Sociale in Papeete: segmentation of the front-office network, equipment migration, server configuration, and network monitoring.',
     journeyAcademicTitle: '2025 · academic projects', journeyAcademicText: 'Development of an FPGA Ethernet card and a study of hardware acceleration for post-quantum cryptography at INSA Toulouse.',
     journeyExchangeTitle: '2023–2024 · university exchange', journeyExchangeText: 'Exchange semester at Université Laval in Québec City.',
     journeyEducationTitle: 'Degree in progress · INSA Toulouse', journeyEducationText: 'Engineering degree in computer science and networks in progress, specializing in network cybersecurity.',
-    skillsTitle: 'Skills and languages', skillNetworks: 'Networks: TCP/IP, VPN, routing, DNS, segmentation',
-    skillSecurity: 'Security: firewalls, encryption, network analysis', skillCode: 'Development: Python, C/C++, Java, SQL',
-    skillTools: 'Tools: Wireshark, Git, VHDL, LaTeX', skillLanguages: 'Native French · fluent English',
-    interestsTitle: 'My interests', interestAI: 'Language models and AI architecture optimization', interestRobotics: 'Robotics and simulation',
+    skillsTitle: 'Skills',
+    interestsTitle: 'Interests', interestAI: 'Language models and AI architecture optimization', interestRobotics: 'Robotics and simulation',
     interestSecurity: 'Cybersecurity and machine learning', interestResearch: 'Algorithm–hardware co-design and edge computing',
     feedbackTitle: 'Comments', feedbackIntro: 'Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.',
     feedbackLabel: 'GitHub comments', feedbackFallback: 'If the comment panel is blocked by your browser, you can still read and post in the same thread on GitHub:', feedbackFallbackLink: 'Open comments on GitHub',
     footer: 'Static site · English / Français',
-    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects'
+    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects', titleContact: 'Gabriel Lanoux · Contact',
+    skillsIntro: 'Grouped by what my projects use, starting with what they show.',
+    skGroupSim: 'Simulation & robotics',
+    skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
+    skSim2: 'Ship manoeuvring models (MMG)',
+    skSim3: 'Collision avoidance (SB-MPC)',
+    skGroupAI: 'AI / ML',
+    skAI1: 'Reinforcement learning in simulation (Stable-Baselines3)',
+    skAI2: 'Local LLM inference (Ollama)',
+    skGroupSys: 'Systems & networks',
+    skSys1: 'Linux, shared GPU server (Docker, Slurm)',
+    skSys2: 'TCP/IP, routing, network segmentation',
+    skSys3: 'Network monitoring, equipment migration',
+    skGroupSec: 'Security',
+    skSec1: 'Network analysis (Wireshark), firewalls',
+    skSec2: 'Intrusion detection',
+    skSec3: 'NMEA/AIS attack surfaces',
+    skGroupLang: 'Languages',
+    skLang1: 'Python',
+    skLang2: 'C/C++',
+    skLang3: 'VHDL',
+    skLang4: 'SQL',
+    skLang5: 'Java'
   }
 };
 
 const page = document.body.dataset.page;
+// Old links to the home-page comments section now go to the contact page.
+if (page === 'home' && location.hash === '#commentaires') location.replace('contact/#commentaires');
 let lang = 'en';
 try { if (localStorage.getItem('portfolio-lang') === 'fr') lang = 'fr'; } catch (e) { /* storage unavailable */ }
 
@@ -136,7 +186,7 @@ function render() {
 }
 
 function initComments() {
-  if (page !== 'home') return;
+  if (page !== 'contact') return;
   const script = document.createElement('script');
   script.src = 'https://giscus.app/client.js';
   script.async = true;
@@ -158,13 +208,6 @@ function initComments() {
   document.getElementById('comments-widget').append(script);
 }
 
-// Close the contact menu when clicking elsewhere or pressing Escape.
-document.addEventListener('click', (event) => {
-  document.querySelectorAll('.nav-menu[open]').forEach(menu => { if (!menu.contains(event.target)) menu.open = false; });
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') document.querySelectorAll('.nav-menu[open]').forEach(menu => { menu.open = false; });
-});
 
 document.querySelector('[data-language-select]').addEventListener('change', (event) => {
   lang = event.target.value === 'fr' ? 'fr' : 'en';
