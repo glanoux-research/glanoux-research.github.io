@@ -1,0 +1,43 @@
+:root { font-family: system-ui, sans-serif; line-height: 1.6; color: #20242a; background: #fff; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+button, input, select { font: inherit; }
+a { color: #174e83; }
+a:focus-visible, button:focus-visible, summary:focus-visible, input:focus-visible { outline: 3px solid #174e83; outline-offset: 3px; }
+.skip-link { position: absolute; left: -9999px; top: 1rem; background: white; padding: .5rem; z-index: 10; }
+.skip-link:focus { left: 1rem; }
+.site-header { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; padding: 1rem max(1rem, calc((100vw - 70rem)/2)); border-bottom: 1px solid #c8cdd2; }
+.brand { font-weight: 700; text-decoration: none; }
+nav { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+nav > a, summary { white-space: nowrap; }
+.nav-menu { position: relative; }
+.nav-menu summary { cursor: pointer; }
+.menu-panel { position: absolute; z-index: 5; min-width: 16rem; max-width: min(22rem, 90vw); padding: .8rem; background: white; border: 1px solid #aeb6be; box-shadow: 0 .3rem .8rem #0002; }
+.menu-panel a { display: block; padding: .25rem 0; }
+.menu-panel p { margin: 0 0 .5rem; }
+.menu-panel dl { display: grid; grid-template-columns: auto 1fr; gap: .2rem .8rem; margin: 0; }
+.menu-panel dd { margin: 0; overflow-wrap: anywhere; }
+.lang-toggle { margin-left: auto; cursor: pointer; }
+main { max-width: 70rem; margin: auto; padding: 0 1rem 4rem; }
+section { padding: 2.5rem 0; border-bottom: 1px solid #d8dce0; }
+.intro { padding-top: 4rem; }
+h1 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; }
+h2 { font-size: 1.7rem; }
+h3 { font-size: 1.15rem; }
+.lead { font-size: 1.25rem; max-width: 50rem; }
+.eyebrow { font-size: .9rem; }
+.journey-list { padding-left: 1.5rem; }
+.journey-list li { margin: 1.2rem 0; }
+.journey-list h3, .journey-list p { margin: .25rem 0; }
+.interest-list { display: flex; flex-wrap: wrap; gap: .7rem 2rem; padding-left: 1.2rem; }
+.project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr)); gap: 1rem; }
+.project-grid article, .demo-panel { border: 1px solid #c8cdd2; padding: 1rem; }
+.project-grid h3 { margin-top: 0; }
+.demo-controls { display: grid; gap: 1rem; max-width: 32rem; }
+.demo-controls label { display: grid; gap: .3rem; }
+.output { border: 1px solid #c8cdd2; padding: 1rem; margin-top: 1rem; min-height: 5rem; }
+.output dl { display: grid; grid-template-columns: auto 1fr; gap: .4rem 1rem; }
+.output dd { margin: 0; }
+.note { font-size: .95rem; }
+footer { max-width: 70rem; padding: 1rem; margin: auto; }
+@media (max-width: 640px) { .site-header { align-items: start; } .menu-panel { position: static; box-shadow: none; } .lang-toggle { margin-left: 0; } }

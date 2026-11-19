@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Parcours, intérêts et projets en intelligence artificielle, robotique et cybersécurité.">
+  <title>Portfolio · Parcours et projets</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="site.js"></script>
+</head>
+<body data-page="home">
+  <a class="skip-link" href="#main" data-i18n="skip">Aller au contenu</a>
+  <header class="site-header">
+    <a class="brand" href="./" data-i18n="brand">Portfolio</a>
+    <nav aria-label="Navigation principale" data-i18n-aria="navLabel">
+      <a href="#parcours" data-i18n="navJourney">Parcours</a>
+      <a href="#interets" data-i18n="navInterests">Intérêts</a>
+      <details class="nav-menu">
+        <summary data-i18n="navDemos">Démos</summary>
+        <div class="menu-panel">
+          <a href="demos/digital-twin.html" data-i18n="demoTwinShort">Jumeau numérique maritime</a>
+          <a href="demos/legal-rag.html" data-i18n="demoRagShort">Recherche documentaire RAG</a>
+          <a href="demos/robotics.html" data-i18n="demoRobotShort">Robotique</a>
+          <a href="#projets" data-i18n="allProjects">Tous les projets</a>
+        </div>
+      </details>
+      <details class="nav-menu">
+        <summary data-i18n="navContact">Contacts</summary>
+        <div class="menu-panel contact-menu">
+          <p data-i18n="contactIntro">Coordonnées publiques à renseigner avant publication.</p>
+          <dl>
+            <dt data-i18n="contactEmail">Email</dt><dd data-contact="email">—</dd>
+            <dt>GitHub</dt><dd data-contact="github">—</dd>
+            <dt>LinkedIn</dt><dd data-contact="linkedin">—</dd>
+          </dl>
+        </div>
+      </details>
+    </nav>
+    <button class="lang-toggle" type="button" aria-label="Switch to English" data-lang-toggle>EN</button>
+  </header>
+
+  <main id="main">
+    <section class="intro" aria-labelledby="intro-title">
+      <p class="eyebrow" data-i18n="eyebrow">Portfolio personnel · première version</p>
+      <h1 id="intro-title" data-i18n="introTitle">Bonjour, je suis [Nom à renseigner].</h1>
+      <p class="lead" data-i18n="introLead">Étudiant en master, je travaille à la rencontre de l’intelligence artificielle, des systèmes physiques et de la cybersécurité.</p>
+      <p data-i18n="introBody">Mon travail actuel porte sur un banc d’essai cyberphysique pour la navigation maritime : simulation d’un navire, évitement de collisions et étude des effets d’attaques sur les données de navigation. J’explore aussi les modèles de langage, la robotique et la création d’outils utiles.</p>
+      <a href="#projets" data-i18n="explore">Explorer les projets</a>
+    </section>
+
+    <section id="parcours" aria-labelledby="journey-title">
+      <h2 id="journey-title" data-i18n="journeyTitle">Mon parcours</h2>
+      <p data-i18n="journeyIntro">Cette section est une base éditoriale. Les établissements, dates, expériences et résultats précis seront ajoutés après validation.</p>
+      <ol class="journey-list">
+        <li><h3 data-i18n="journeyNowTitle">Recherche actuelle</h3><p data-i18n="journeyNowText">Banc d’essai de navigation maritime : modèle de manœuvre, évitement de collisions et sécurité du flux de données NMEA/AIS.</p></li>
+        <li><h3 data-i18n="journeyProjectsTitle">Projets techniques</h3><p data-i18n="journeyProjectsText">Prototypes de jumeau numérique, recherche augmentée par récupération, robotique simulée et systèmes autour des LLM.</p></li>
+        <li><h3 data-i18n="journeyNextTitle">À compléter</h3><p data-i18n="journeyNextText">Formation, expériences professionnelles, publications et dates clés.</p></li>
+      </ol>
+    </section>
+
+    <section id="interets" aria-labelledby="interests-title">
+      <h2 id="interests-title" data-i18n="interestsTitle">Mes intérêts</h2>
+      <ul class="interest-list">
+        <li data-i18n="interestAI">IA appliquée et modèles de langage</li>
+        <li data-i18n="interestRobotics">Robotique et simulation</li>
+        <li data-i18n="interestSecurity">Cybersécurité des systèmes physiques</li>
+        <li data-i18n="interestResearch">Recherche expérimentale et visualisation</li>
+      </ul>
+    </section>
+
+    <section id="projets" aria-labelledby="projects-title">
+      <h2 id="projects-title" data-i18n="projectsTitle">Démos de projets</h2>
+      <p data-i18n="projectsIntro">Ces aperçus interactifs illustrent des idées présentes dans mes projets. Les calculs et données sont simplifiés pour le navigateur.</p>
+      <div class="project-grid">
+        <article><h3 data-i18n="demoTwinShort">Jumeau numérique maritime</h3><p data-i18n="twinCard">Faire varier vitesse et état de coque pour observer une télémétrie simulée et une estimation illustrative de consommation.</p><a href="demos/digital-twin.html" data-i18n="openDemo">Ouvrir la démo</a></article>
+        <article><h3 data-i18n="demoRagShort">Recherche documentaire RAG</h3><p data-i18n="ragCard">Suivre les étapes d’une recherche dans un petit corpus fictif et voir comment une réponse citerait ses sources.</p><a href="demos/legal-rag.html" data-i18n="openDemo">Ouvrir la démo</a></article>
+        <article><h3 data-i18n="demoRobotShort">Robotique</h3><p data-i18n="robotCard">Explorer le déphasage d’une démarche en boucle ouverte sur une représentation simplifiée de robot.</p><a href="demos/robotics.html" data-i18n="openDemo">Ouvrir la démo</a></article>
+      </div>
+    </section>
+  </main>
+  <footer><p data-i18n="footer">Portfolio en cours de préparation · Français / English</p></footer>
+</body>
+</html>
