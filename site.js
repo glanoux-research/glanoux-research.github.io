@@ -1,23 +1,32 @@
 // Renseigner uniquement les coordonnées que vous souhaitez rendre publiques.
-const PUBLIC_CONTACTS = { email: '', github: '', linkedin: '' };
+const PUBLIC_CONTACTS = {
+  email: 'lanoux@snu.ac.kr',
+  github: 'https://github.com/glanoux-research',
+  linkedin: 'https://www.linkedin.com/in/gabriel-lanoux-05a367228/'
+};
 
 const translations = {
   fr: {
     skip: 'Aller au contenu', brand: 'Portfolio', navLabel: 'Navigation principale',
-    navJourney: 'Parcours', navInterests: 'Intérêts', navDemos: 'Démos', navContact: 'Contacts',
-    contactIntro: 'Coordonnées publiques à renseigner avant publication.', contactEmail: 'Email',
+    navJourney: 'Parcours', navInterests: 'Intérêts', navSkills: 'Compétences', navDemos: 'Démos', navContact: 'Contacts',
+    contactIntro: 'Retrouve-moi sur ces canaux publics.', contactEmail: 'Email',
     demoTwinShort: 'Jumeau numérique maritime', demoRagShort: 'Recherche documentaire RAG',
     demoRobotShort: 'Robotique', allProjects: 'Tous les projets',
-    eyebrow: 'Portfolio personnel · première version', introTitle: 'Bonjour, je suis [Nom à renseigner].',
-    introLead: 'Étudiant en master, je travaille à la rencontre de l’intelligence artificielle, des systèmes physiques et de la cybersécurité.',
-    introBody: 'Mon travail actuel porte sur un banc d’essai cyberphysique pour la navigation maritime : simulation d’un navire, évitement de collisions et étude des effets d’attaques sur les données de navigation. J’explore aussi les modèles de langage, la robotique et la création d’outils utiles.',
+    eyebrow: 'Cybersécurité · Réseaux · Recherche appliquée', introTitle: 'Bonjour, je suis Gabriel Lanoux.',
+    introLead: 'Formé en informatique et réseaux à l’INSA Toulouse, avec une spécialisation en cybersécurité, j’explore la sécurité des systèmes connectés et l’intelligence artificielle appliquée.',
+    introBody: 'Mon travail actuel porte sur un banc d’essai cyberphysique pour la navigation maritime : simulation d’un navire, évitement de collisions et étude des effets d’attaques sur les données NMEA/AIS. Je m’intéresse aussi à la robotique, aux modèles de langage et à la façon de rendre les résultats de recherche observables et utiles.',
     explore: 'Explorer les projets', journeyTitle: 'Mon parcours',
-    journeyIntro: 'Cette section est une base éditoriale. Les établissements, dates, expériences et résultats précis seront ajoutés après validation.',
-    journeyNowTitle: 'Recherche actuelle', journeyNowText: 'Banc d’essai de navigation maritime : modèle de manœuvre, évitement de collisions et sécurité du flux de données NMEA/AIS.',
-    journeyProjectsTitle: 'Projets techniques', journeyProjectsText: 'Prototypes de jumeau numérique, recherche augmentée par récupération, robotique simulée et systèmes autour des LLM.',
-    journeyNextTitle: 'À compléter', journeyNextText: 'Formation, expériences professionnelles, publications et dates clés.',
+    journeyIntro: 'Des réseaux à la recherche sur les systèmes cyberphysiques, mon parcours relie infrastructure, simulation et sécurité.',
+    journeyNowTitle: 'Recherche actuelle · navigation maritime', journeyNowText: 'Banc d’essai associant un modèle de manœuvre de navire, l’évitement de collisions et l’étude d’attaques sur les données NMEA/AIS. L’objectif est de comparer les détecteurs d’intrusion à leurs effets sur la mission.',
+    journeyInternshipTitle: '2025 · stage en cybersécurité réseau', journeyInternshipText: 'À la Caisse de Prévoyance Sociale de Papeete : segmentation du réseau du front office, migration d’équipements et configuration des serveurs associés.',
+    journeyAcademicTitle: '2025 · projets académiques', journeyAcademicText: 'Développement d’une carte Ethernet sur FPGA et étude de l’accélération matérielle d’un chiffrement post-quantique à l’INSA Toulouse.',
+    journeyExchangeTitle: '2023–2024 · échange universitaire', journeyExchangeText: 'Semestre d’échange à l’Université Laval, à Québec.',
+    journeyEducationTitle: 'Formation · INSA Toulouse', journeyEducationText: 'Parcours d’ingénieur en informatique et réseaux, spécialité cybersécurité orientée réseau.',
     interestsTitle: 'Mes intérêts', interestAI: 'IA appliquée et modèles de langage', interestRobotics: 'Robotique et simulation',
     interestSecurity: 'Cybersécurité des systèmes physiques', interestResearch: 'Recherche expérimentale et visualisation',
+    skillsTitle: 'Compétences et langues', skillNetworks: 'Réseaux : TCP/IP, VPN, routage, DNS, segmentation',
+    skillSecurity: 'Sécurité : pare-feux, chiffrement, analyse réseau', skillCode: 'Développement : Python, C/C++, Java, SQL',
+    skillTools: 'Outils : Wireshark, Git, VHDL, LaTeX', skillLanguages: 'Français natif · anglais courant',
     projectsTitle: 'Démos de projets', projectsIntro: 'Ces aperçus interactifs illustrent des idées présentes dans mes projets. Les calculs et données sont simplifiés pour le navigateur.',
     twinCard: 'Faire varier vitesse et état de coque pour observer une télémétrie simulée et une estimation illustrative de consommation.',
     ragCard: 'Suivre les étapes d’une recherche dans un petit corpus fictif et voir comment une réponse citerait ses sources.',
@@ -36,24 +45,29 @@ const translations = {
     robotIntro: 'Le projet local explore la simulation et la commande d’un robot articulé. Déplacez la phase pour voir le décalage entre deux jambes dans un cycle abstrait ; ce schéma ne représente pas la dynamique réelle du robot.',
     phase: 'Phase du cycle (%)', robotNote: 'Schéma pédagogique en boucle ouverte ; aucune stabilité ou performance n’est revendiquée.',
     leftLeg: 'Jambe gauche', rightLeg: 'Jambe droite', forward: 'vers l’avant', backward: 'vers l’arrière', neutral: 'au centre',
-    unavailable: 'À renseigner', titleHome: 'Portfolio · Parcours et projets', titleTwin: 'Démo · Jumeau numérique maritime', titleRag: 'Démo · Recherche documentaire RAG', titleRobot: 'Démo · Robotique'
+    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets', titleTwin: 'Démo · Jumeau numérique maritime', titleRag: 'Démo · Recherche documentaire RAG', titleRobot: 'Démo · Robotique'
   },
   en: {
     skip: 'Skip to content', brand: 'Portfolio', navLabel: 'Main navigation',
-    navJourney: 'Journey', navInterests: 'Interests', navDemos: 'Demos', navContact: 'Contact',
-    contactIntro: 'Public contact details to be added before publication.', contactEmail: 'Email',
+    navJourney: 'Journey', navInterests: 'Interests', navSkills: 'Skills', navDemos: 'Demos', navContact: 'Contact',
+    contactIntro: 'Find me on these public channels.', contactEmail: 'Email',
     demoTwinShort: 'Maritime digital twin', demoRagShort: 'RAG document search',
     demoRobotShort: 'Robotics', allProjects: 'All projects',
-    eyebrow: 'Personal portfolio · first version', introTitle: 'Hello, I’m [Name to add].',
-    introLead: 'I am a master’s student working at the intersection of artificial intelligence, physical systems, and cybersecurity.',
-    introBody: 'My current work is a cyberphysical testbed for maritime navigation: ship simulation, collision avoidance, and the effects of attacks on navigation data. I also explore language models, robotics, and useful software tools.',
+    eyebrow: 'Cybersecurity · Networks · Applied research', introTitle: 'Hello, I’m Gabriel Lanoux.',
+    introLead: 'Trained in computer science and networks at INSA Toulouse, with a cybersecurity specialization, I explore the security of connected systems and applied artificial intelligence.',
+    introBody: 'My current work is a cyberphysical testbed for maritime navigation: ship simulation, collision avoidance, and the effects of attacks on NMEA/AIS data. I am also interested in robotics, language models, and making research results observable and useful.',
     explore: 'Explore projects', journeyTitle: 'My journey',
-    journeyIntro: 'This section is an editorial starting point. Schools, dates, experience, and specific outcomes will be added after confirmation.',
-    journeyNowTitle: 'Current research', journeyNowText: 'Maritime navigation testbed: manoeuvring model, collision avoidance, and security of the NMEA/AIS data path.',
-    journeyProjectsTitle: 'Technical projects', journeyProjectsText: 'Prototypes in digital twins, retrieval augmented search, robot simulation, and LLM systems.',
-    journeyNextTitle: 'To complete', journeyNextText: 'Education, professional experience, publications, and milestones.',
+    journeyIntro: 'From networks to cyberphysical systems research, my path connects infrastructure, simulation, and security.',
+    journeyNowTitle: 'Current research · maritime navigation', journeyNowText: 'A testbed combining a ship manoeuvring model, collision avoidance, and attacks on NMEA/AIS data. The aim is to compare intrusion detectors through their effects on the mission.',
+    journeyInternshipTitle: '2025 · network cybersecurity internship', journeyInternshipText: 'At Caisse de Prévoyance Sociale in Papeete: front office network segmentation, equipment migration, and configuration of associated servers.',
+    journeyAcademicTitle: '2025 · academic projects', journeyAcademicText: 'Development of an FPGA Ethernet card and a study of hardware acceleration for post-quantum cryptography at INSA Toulouse.',
+    journeyExchangeTitle: '2023–2024 · university exchange', journeyExchangeText: 'Exchange semester at Université Laval in Québec City.',
+    journeyEducationTitle: 'Education · INSA Toulouse', journeyEducationText: 'Engineering studies in computer science and networks, specializing in network cybersecurity.',
     interestsTitle: 'My interests', interestAI: 'Applied AI and language models', interestRobotics: 'Robotics and simulation',
     interestSecurity: 'Cybersecurity for physical systems', interestResearch: 'Experimental research and visualization',
+    skillsTitle: 'Skills and languages', skillNetworks: 'Networks: TCP/IP, VPN, routing, DNS, segmentation',
+    skillSecurity: 'Security: firewalls, encryption, network analysis', skillCode: 'Development: Python, C/C++, Java, SQL',
+    skillTools: 'Tools: Wireshark, Git, VHDL, LaTeX', skillLanguages: 'Native French · fluent English',
     projectsTitle: 'Project demos', projectsIntro: 'These interactive previews illustrate ideas from my projects. Calculations and data are simplified for the browser.',
     twinCard: 'Change speed and hull condition to see simulated telemetry and an illustrative fuel estimate.',
     ragCard: 'Follow a search in a small fictional corpus and see how an answer could cite its sources.',
@@ -72,7 +86,7 @@ const translations = {
     robotIntro: 'The local project explores simulation and control of an articulated robot. Move the phase to see the offset between two legs in an abstract cycle; this diagram does not model the robot’s real dynamics.',
     phase: 'Cycle phase (%)', robotNote: 'Open loop educational diagram; no claim of stability or performance.',
     leftLeg: 'Left leg', rightLeg: 'Right leg', forward: 'forward', backward: 'backward', neutral: 'centered',
-    unavailable: 'To add', titleHome: 'Portfolio · Journey and projects', titleTwin: 'Demo · Maritime digital twin', titleRag: 'Demo · RAG document search', titleRobot: 'Demo · Robotics'
+    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects', titleTwin: 'Demo · Maritime digital twin', titleRag: 'Demo · RAG document search', titleRobot: 'Demo · Robotics'
   }
 };
 

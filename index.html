@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Parcours, intérêts et projets en intelligence artificielle, robotique et cybersécurité.">
-  <title>Portfolio · Parcours et projets</title>
+  <meta name="description" content="Gabriel Lanoux : parcours en cybersécurité, réseaux, intelligence artificielle et projets de recherche.">
+  <title>Gabriel Lanoux · Parcours et projets</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="site.js"></script>
 </head>
@@ -15,6 +15,7 @@
     <nav aria-label="Navigation principale" data-i18n-aria="navLabel">
       <a href="#parcours" data-i18n="navJourney">Parcours</a>
       <a href="#interets" data-i18n="navInterests">Intérêts</a>
+      <a href="#competences" data-i18n="navSkills">Compétences</a>
       <details class="nav-menu">
         <summary data-i18n="navDemos">Démos</summary>
         <div class="menu-panel">
@@ -27,7 +28,7 @@
       <details class="nav-menu">
         <summary data-i18n="navContact">Contacts</summary>
         <div class="menu-panel contact-menu">
-          <p data-i18n="contactIntro">Coordonnées publiques à renseigner avant publication.</p>
+          <p data-i18n="contactIntro">Retrouve-moi sur ces canaux publics.</p>
           <dl>
             <dt data-i18n="contactEmail">Email</dt><dd data-contact="email">—</dd>
             <dt>GitHub</dt><dd data-contact="github">—</dd>
@@ -41,21 +42,34 @@
 
   <main id="main">
     <section class="intro" aria-labelledby="intro-title">
-      <p class="eyebrow" data-i18n="eyebrow">Portfolio personnel · première version</p>
-      <h1 id="intro-title" data-i18n="introTitle">Bonjour, je suis [Nom à renseigner].</h1>
-      <p class="lead" data-i18n="introLead">Étudiant en master, je travaille à la rencontre de l’intelligence artificielle, des systèmes physiques et de la cybersécurité.</p>
-      <p data-i18n="introBody">Mon travail actuel porte sur un banc d’essai cyberphysique pour la navigation maritime : simulation d’un navire, évitement de collisions et étude des effets d’attaques sur les données de navigation. J’explore aussi les modèles de langage, la robotique et la création d’outils utiles.</p>
+      <p class="eyebrow" data-i18n="eyebrow">Cybersécurité · Réseaux · Recherche appliquée</p>
+      <h1 id="intro-title" data-i18n="introTitle">Bonjour, je suis Gabriel Lanoux.</h1>
+      <p class="lead" data-i18n="introLead">Formé en informatique et réseaux à l’INSA Toulouse, avec une spécialisation en cybersécurité, j’explore la sécurité des systèmes connectés et l’intelligence artificielle appliquée.</p>
+      <p data-i18n="introBody">Mon travail actuel porte sur un banc d’essai cyberphysique pour la navigation maritime : simulation d’un navire, évitement de collisions et étude des effets d’attaques sur les données NMEA/AIS. Je m’intéresse aussi à la robotique, aux modèles de langage et à la façon de rendre les résultats de recherche observables et utiles.</p>
       <a href="#projets" data-i18n="explore">Explorer les projets</a>
     </section>
 
     <section id="parcours" aria-labelledby="journey-title">
       <h2 id="journey-title" data-i18n="journeyTitle">Mon parcours</h2>
-      <p data-i18n="journeyIntro">Cette section est une base éditoriale. Les établissements, dates, expériences et résultats précis seront ajoutés après validation.</p>
+      <p data-i18n="journeyIntro">Des réseaux à la recherche sur les systèmes cyberphysiques, mon parcours relie infrastructure, simulation et sécurité.</p>
       <ol class="journey-list">
-        <li><h3 data-i18n="journeyNowTitle">Recherche actuelle</h3><p data-i18n="journeyNowText">Banc d’essai de navigation maritime : modèle de manœuvre, évitement de collisions et sécurité du flux de données NMEA/AIS.</p></li>
-        <li><h3 data-i18n="journeyProjectsTitle">Projets techniques</h3><p data-i18n="journeyProjectsText">Prototypes de jumeau numérique, recherche augmentée par récupération, robotique simulée et systèmes autour des LLM.</p></li>
-        <li><h3 data-i18n="journeyNextTitle">À compléter</h3><p data-i18n="journeyNextText">Formation, expériences professionnelles, publications et dates clés.</p></li>
+        <li><h3 data-i18n="journeyNowTitle">Recherche actuelle · navigation maritime</h3><p data-i18n="journeyNowText">Banc d’essai associant un modèle de manœuvre de navire, l’évitement de collisions et l’étude d’attaques sur les données NMEA/AIS. L’objectif est de comparer les détecteurs d’intrusion à leurs effets sur la mission.</p></li>
+        <li><h3 data-i18n="journeyInternshipTitle">2025 · stage en cybersécurité réseau</h3><p data-i18n="journeyInternshipText">À la Caisse de Prévoyance Sociale de Papeete : segmentation du réseau du front office, migration d’équipements et configuration des serveurs associés.</p></li>
+        <li><h3 data-i18n="journeyAcademicTitle">2025 · projets académiques</h3><p data-i18n="journeyAcademicText">Développement d’une carte Ethernet sur FPGA et étude de l’accélération matérielle d’un chiffrement post-quantique à l’INSA Toulouse.</p></li>
+        <li><h3 data-i18n="journeyExchangeTitle">2023–2024 · échange universitaire</h3><p data-i18n="journeyExchangeText">Semestre d’échange à l’Université Laval, à Québec.</p></li>
+        <li><h3 data-i18n="journeyEducationTitle">Formation · INSA Toulouse</h3><p data-i18n="journeyEducationText">Parcours d’ingénieur en informatique et réseaux, spécialité cybersécurité orientée réseau.</p></li>
       </ol>
+    </section>
+
+    <section id="competences" aria-labelledby="skills-title">
+      <h2 id="skills-title" data-i18n="skillsTitle">Compétences et langues</h2>
+      <ul class="interest-list">
+        <li data-i18n="skillNetworks">Réseaux : TCP/IP, VPN, routage, DNS, segmentation</li>
+        <li data-i18n="skillSecurity">Sécurité : pare-feux, chiffrement, analyse réseau</li>
+        <li data-i18n="skillCode">Développement : Python, C/C++, Java, SQL</li>
+        <li data-i18n="skillTools">Outils : Wireshark, Git, VHDL, LaTeX</li>
+        <li data-i18n="skillLanguages">Français natif · anglais courant</li>
+      </ul>
     </section>
 
     <section id="interets" aria-labelledby="interests-title">

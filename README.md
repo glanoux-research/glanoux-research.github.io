@@ -4,10 +4,10 @@ Site statique bilingue français / anglais. Aucun outil de compilation ni dépen
 
 ## Avant publication
 
-1. Compléter le nom, le parcours et les expériences dans `index.html` et les deux dictionnaires de `site.js`.
-2. Ajouter uniquement les coordonnées publiques dans `site.js`, objet `PUBLIC_CONTACTS`. Les coordonnées absentes restent marquées « à renseigner ».
-3. Relire les descriptions des trois démos. Il s'agit d'illustrations simplifiées, distinctes des applications et modèles locaux.
-4. Créer un dépôt public nommé `<nom-du-compte>.github.io` sur le nouveau compte GitHub et y envoyer **uniquement le contenu de ce dossier**. Dans Settings → Pages, choisir « Deploy from a branch », branche `main`, dossier `/ (root)`.
+1. Relire les informations biographiques et le parcours. La date de fin du cursus INSA n'est pas confirmée dans le CV fourni ; le site ne présente donc pas le diplôme comme acquis.
+2. Les coordonnées publiques validées sont `lanoux@snu.ac.kr`, le profil LinkedIn et le compte GitHub `glanoux-research`. Vérifier les liens avant publication.
+3. Choisir les démos définitives. Les trois aperçus actuels sont provisoires et distincts des applications et modèles locaux.
+4. Créer un dépôt public nommé `glanoux-research.github.io` sur le nouveau compte GitHub et y envoyer **uniquement le contenu de ce dossier**. Dans Settings → Pages, choisir « Deploy from a branch », branche `main`, dossier `/ (root)`.
 
 ## Limite concernant les robots
 
