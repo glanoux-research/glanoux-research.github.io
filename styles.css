@@ -71,6 +71,8 @@ main > section:first-child { border-top: 0; }
 
 /* Projects */
 .project-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+.project-grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.more { margin: 2rem 0 0; }
 .project {
   display: flex; flex-direction: column; overflow: hidden;
   background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius);
@@ -113,8 +115,10 @@ main > section:first-child { border-top: 0; }
 .chips li { padding: .4rem .75rem; border: 1px solid var(--pf-line); border-radius: 999px; background: var(--pf-surface); font-size: .92rem; }
 
 /* Comments */
-.contact-page { padding-top: 4rem; }
-.contact-page h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 0 0 .6rem; }
+.page-top { padding-top: 4rem; }
+.page-top h1 { font-size: clamp(2rem, 4vw, 2.6rem); margin: 0 0 .6rem; }
+main > .about-top { padding-bottom: 0; }
+main > .about-top + section { border-top: 0; padding-top: 1rem; }
 .contact-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: 1rem; }
 .contact-card { background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); padding: 1.1rem 1.2rem 1.2rem; }
 .contact-card h2 { font: 500 .74rem/1.4 var(--pf-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--pf-accent); margin: 0 0 .5rem; }
@@ -128,9 +132,12 @@ nav > a[aria-current="page"] { color: var(--pf-accent); }
 .site-footer { border-top: 1px solid var(--pf-line); }
 .site-footer p { max-width: 72rem; margin: auto; padding: 1.5rem 16px; font: .8rem var(--pf-mono); color: var(--pf-muted); }
 
+@media (max-width: 1060px) and (min-width: 861px) {
+  .project-grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 2rem; padding-top: 3rem; }
-  .project-grid { grid-template-columns: 1fr; }
+  .project-grid, .project-grid-3 { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   .header-inner { flex-wrap: wrap; gap: .6rem 1rem; }

@@ -8,7 +8,18 @@ English is the default language. Visitors can choose **Français** in the langua
 
 The biography draws on Gabriel's CV, his confirmed details, his public LinkedIn profile, and his [Deep Learning Lab profile](https://dllab.snu.ac.kr/m_professor/). His INSA Toulouse engineering degree is **in progress**; the site does not claim it has been awarded.
 
-The home page links to six project pages in `projects/`. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
+The site has four pages:
+
+| Page | Content |
+|---|---|
+| `/` | Introduction and three featured projects |
+| `/projects/` | All six project cards |
+| `/about/` | Journey, skills and interests |
+| `/contact/` | Contact channels and the comments thread |
+
+The site used to be a single page. `site.js` sends old links to its sections (`/#projects`, `/#parcours`, `/#competences`, `/#commentaires`) to the matching new page. `sitemap.xml` lists every page for search engines.
+
+The projects page links to six project pages in `projects/`. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
 
 ## Comments
 
@@ -20,7 +31,7 @@ Some browsers or extensions may block third-party iframes. The page includes a d
 
 ## Design
 
-`assets/theme.css` holds the shared design tokens: colours for light and dark mode, IBM Plex fonts, and the navigation bar shown at the top of every project page. The home page layout is in `styles.css`.
+`assets/theme.css` holds the shared design tokens: colours for light and dark mode, IBM Plex fonts, and the navigation bar shown at the top of every project page. The layout of the four main pages is in `styles.css`; they share the same header, footer and translations.
 
 The project pages were first built as separate reports with their own styles. Each one keeps its layout and its data colours (routes, ships, wave heights, speed loss), but its neutral colours, accent and fonts are mapped onto the shared tokens by a `<style id="pf-map">` block at the end of the page. Changing a token in `theme.css` restyles the home page and all project pages at once. Card thumbnails are in `assets/thumbs/`.
 
