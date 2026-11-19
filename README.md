@@ -36,7 +36,7 @@ Some browsers or extensions may block third-party iframes. The page includes a d
 
 ## Design
 
-`assets/theme.css` holds the shared design tokens: colours for light and dark mode, IBM Plex fonts, and the navigation bar shown at the top of every project page. The layout of the four main pages is in `styles.css`; they share the same header, footer and translations.
+`assets/theme.css` holds the shared design tokens: colours for light and dark mode, IBM Plex fonts, and the navigation bar shown at the top of every project page, with the same links as the site header (Projects, About, Blog, Contact). The layout of the four main pages is in `styles.css`; they share the same header, footer and translations.
 
 The project pages were first built as separate reports with their own styles. Each one keeps its layout and its data colours (routes, ships, wave heights, speed loss), but its neutral colours, accent and fonts are mapped onto the shared tokens by a `<style id="pf-map">` block at the end of the page. Changing a token in `theme.css` restyles the home page and all project pages at once. Card thumbnails are in `assets/thumbs/`.
 

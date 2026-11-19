@@ -56,35 +56,45 @@
   }
 }
 
-/* Project-page navigation bar, injected at the top of each project page. */
+/* Project-page navigation bar: the same links as the site header
+   (Projects, About, Blog, Contact), injected at the top of each project page. */
 .pf-bar {
+  box-sizing: border-box;
   position: sticky;
   top: 0;
   z-index: 1000;
   display: flex;
   align-items: center;
-  gap: .6rem;
+  gap: 1.6rem;
   min-height: var(--pf-bar-h);
-  padding: 0 max(16px, calc((100vw - 72rem) / 2));
+  padding: .55rem max(16px, calc((100vw - 72rem) / 2));
   background: color-mix(in srgb, var(--pf-bg) 88%, transparent);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--pf-line);
-  font: 500 13px/1.3 var(--pf-sans);
+  font: 400 14.5px/1.3 var(--pf-sans);
   color: var(--pf-ink-2);
 }
-.pf-bar a { color: var(--pf-ink); text-decoration: none; }
-.pf-bar a:hover { color: var(--pf-accent); }
+.pf-bar * { box-sizing: border-box; }
+.pf-bar a { color: var(--pf-ink-2); text-decoration: none; white-space: nowrap; }
+.pf-bar a:hover, .pf-bar a.pf-active { color: var(--pf-accent); }
 .pf-bar a:focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; border-radius: 3px; }
-.pf-bar .pf-name { font: 600 14px/1 var(--pf-cond); letter-spacing: .01em; }
-.pf-bar .pf-sep { color: var(--pf-muted); }
-.pf-bar .pf-current { color: var(--pf-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
-.pf-bar .pf-tag {
+.pf-bar .pf-name { font: 600 18px/1 var(--pf-cond); color: var(--pf-ink); }
+.pf-bar .pf-links { display: flex; gap: 1.3rem; min-width: 0; }
+.pf-bar .pf-current {
   margin-left: auto;
-  flex: none;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font: 500 11px/1 var(--pf-mono);
   text-transform: uppercase;
   letter-spacing: .06em;
-  color: var(--pf-accent);
+  color: var(--pf-muted);
 }
-@media (max-width: 560px) { .pf-bar .pf-tag { display: none; } }
+@media (max-width: 860px) { .pf-bar .pf-current { display: none; } }
+@media (max-width: 560px) {
+  .pf-bar { flex-wrap: wrap; gap: .35rem 1rem; padding-top: .6rem; padding-bottom: .6rem; }
+  .pf-bar .pf-links { width: 100%; gap: 1.1rem; overflow-x: auto; scrollbar-width: none; }
+  .pf-bar .pf-links::-webkit-scrollbar { display: none; }
+}
