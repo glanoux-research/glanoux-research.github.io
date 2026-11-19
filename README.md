@@ -1,28 +1,25 @@
-# Portfolio GitHub Pages
+# Gabriel Lanoux's portfolio
 
-Site statique bilingue français / anglais. Aucun outil de compilation ni dépendance n'est requis.
+A static portfolio hosted at [glanoux-research.github.io](https://glanoux-research.github.io/) from the `main` branch of [glanoux-research/glanoux-research.github.io](https://github.com/glanoux-research/glanoux-research.github.io). No build tool or runtime dependency is required.
 
-## État actuel
+## Content and languages
 
-Le site est publié sur `https://glanoux-research.github.io/` depuis la branche `main` du dépôt `glanoux-research/glanoux-research.github.io`. Les coordonnées publiques ont été vérifiées. Le diplôme d'ingénieur INSA Toulouse est **en cours** ; aucune date d'obtention n'est annoncée.
+English is the default language. Visitors can choose **Français** in the language selector; their choice is saved locally in the browser. The HTML fallback is also in English when JavaScript is unavailable. Both translations are maintained in `site.js`.
 
-La biographie combine le CV fourni, les précisions du propriétaire, son profil LinkedIn et sa [fiche sur le site du Deep Learning Lab](https://dllab.snu.ac.kr/m_professor/). Le laboratoire le présente dans un parcours de double diplôme INSA Toulouse–SNU et décrit ses intérêts de recherche. Le profil LinkedIn indique des études à Seoul National University en 2026–2027 et évoque des cours d'optimisation GPU.
+The biography draws on Gabriel's CV, his confirmed details, his public LinkedIn profile, and his [Deep Learning Lab profile](https://dllab.snu.ac.kr/m_professor/). His INSA Toulouse engineering degree is **in progress**; the site does not claim it has been awarded.
 
-## À décider
+The three project previews are illustrative and provisional. They do not run the complete local research systems. Their final selection and the site's visual design remain to be decided.
 
-- Choisir les démos définitives. Les trois aperçus actuels sont provisoires et distincts des applications et modèles locaux.
-- Définir l'esthétique dans une étape ultérieure.
+## Comments
 
-## Commentaires
+The home page embeds [giscus](https://giscus.app/) and displays a dedicated [GitHub Discussion](https://github.com/glanoux-research/glanoux-research.github.io/discussions/1). Visitors can read comments on the page and sign in with GitHub to post. Comments are public and can be moderated in GitHub Discussions.
 
-La section « Commentaires » intègre [giscus](https://giscus.app/) avec un fil GitHub Discussions du dépôt. Les visiteurs peuvent lire les messages sur le site et se connecter à GitHub pour commenter. Les commentaires sont publics et peuvent être modérés dans la [discussion dédiée](https://github.com/glanoux-research/glanoux-research.github.io/discussions/1).
+Visitor content is displayed inside giscus's iframe, not inserted into this site's DOM. The `giscus.json` file restricts embedding to the production origin. The giscus GitHub App is installed only for this repository and has access to its Discussions. This setup relies on GitHub and giscus for authentication and comment rendering; it does not provide a guarantee against every security issue in those services.
 
-Le site ne reçoit ni ne rend lui-même le contenu des commentaires : le module giscus les affiche dans une iframe indépendante. `giscus.json` limite l'intégration au domaine du site. L'application GitHub giscus doit être autorisée pour **ce dépôt uniquement** afin que le widget puisse publier les commentaires.
+## Crawlers and demos
 
-## Limite concernant les robots
+`robots.txt` asks cooperative crawlers to avoid `/demos/`, and each demo page has a `noindex` directive. These are voluntary directives and do not stop a crawler that ignores them. Actual access control would require hosting the demos behind authentication elsewhere.
 
-`robots.txt` demande aux robots coopératifs d'éviter `/demos/`, et chaque page de démo porte une directive `noindex`. Sur une page GitHub Pages publique, ces directives sont volontaires : elles ne bloquent ni l'accès direct ni un robot qui les ignore. Pour interdire réellement l'accès aux démos, il faut les héberger derrière une authentification sur un service distinct. Le `robots.txt` livré suppose un dépôt utilisateur `<nom-du-compte>.github.io` à la racine du domaine ; sur un dépôt projet publié sous un sous-chemin, cette règle à la racine n'est pas applicable.
+## Local preview
 
-## Vérification locale
-
-Depuis ce dossier : `python3 -m http.server 8000`, puis ouvrir `http://localhost:8000`.
+Run `python3 -m http.server 8000` from this directory and open `http://localhost:8000`. The giscus iframe is restricted to the production origin, so comments will only load on the published site.

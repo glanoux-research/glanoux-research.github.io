@@ -7,7 +7,7 @@ const PUBLIC_CONTACTS = {
 
 const translations = {
   fr: {
-    skip: 'Aller au contenu', brand: 'Portfolio', navLabel: 'Navigation principale',
+    skip: 'Aller au contenu', brand: 'Portfolio', navLabel: 'Navigation principale', languageLabel: 'Langue',
     navJourney: 'Parcours', navInterests: 'Intérêts', navSkills: 'Compétences', navFeedback: 'Commentaires', navDemos: 'Démos', navContact: 'Contacts',
     contactIntro: 'Retrouve-moi sur ces canaux publics.', contactEmail: 'Email',
     demoTwinShort: 'Jumeau numérique maritime', demoRagShort: 'Recherche documentaire RAG',
@@ -51,7 +51,7 @@ const translations = {
     unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets', titleTwin: 'Démo · Jumeau numérique maritime', titleRag: 'Démo · Recherche documentaire RAG', titleRobot: 'Démo · Robotique'
   },
   en: {
-    skip: 'Skip to content', brand: 'Portfolio', navLabel: 'Main navigation',
+    skip: 'Skip to content', brand: 'Portfolio', navLabel: 'Main navigation', languageLabel: 'Language',
     navJourney: 'Journey', navInterests: 'Interests', navSkills: 'Skills', navFeedback: 'Feedback', navDemos: 'Demos', navContact: 'Contact',
     contactIntro: 'Find me on these public channels.', contactEmail: 'Email',
     demoTwinShort: 'Maritime digital twin', demoRagShort: 'RAG document search',
@@ -97,7 +97,7 @@ const translations = {
 };
 
 const page = document.body.dataset.page;
-let lang = localStorage.getItem('portfolio-lang') === 'en' ? 'en' : 'fr';
+let lang = localStorage.getItem('portfolio-lang') === 'fr' ? 'fr' : 'en';
 
 function setText(selector, value) {
   const element = document.querySelector(selector);
@@ -154,9 +154,9 @@ function render() {
   document.title = t['title' + page[0].toUpperCase() + page.slice(1)];
   document.querySelectorAll('[data-i18n]').forEach(el => { el.textContent = t[el.dataset.i18n]; });
   document.querySelectorAll('[data-i18n-aria]').forEach(el => { el.setAttribute('aria-label', t[el.dataset.i18nAria]); });
-  const button = document.querySelector('[data-lang-toggle]');
-  button.textContent = lang === 'fr' ? 'EN' : 'FR';
-  button.setAttribute('aria-label', lang === 'fr' ? 'Switch to English' : 'Passer en français');
+  const selector = document.querySelector('[data-language-select]');
+  selector.value = lang;
+  selector.setAttribute('aria-label', t.languageLabel);
   renderContacts(t);
   renderTwin(t);
   renderRag(t);
@@ -188,8 +188,8 @@ function initComments() {
   document.getElementById('comments-widget').append(script);
 }
 
-document.querySelector('[data-lang-toggle]').addEventListener('click', () => {
-  lang = lang === 'fr' ? 'en' : 'fr';
+document.querySelector('[data-language-select]').addEventListener('change', (event) => {
+  lang = event.target.value === 'fr' ? 'fr' : 'en';
   localStorage.setItem('portfolio-lang', lang);
   render();
 });
