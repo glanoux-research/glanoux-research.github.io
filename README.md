@@ -6,7 +6,7 @@ Site statique bilingue français / anglais. Aucun outil de compilation ni dépen
 
 Le site est publié sur `https://glanoux-research.github.io/` depuis la branche `main` du dépôt `glanoux-research/glanoux-research.github.io`. Les coordonnées publiques ont été vérifiées. Le diplôme d'ingénieur INSA Toulouse est **en cours** ; aucune date d'obtention n'est annoncée.
 
-La biographie combine le CV fourni, les précisions du propriétaire et les informations publiques de son profil LinkedIn. Le profil indique des études à Seoul National University en 2026–2027 et évoque des cours d'optimisation GPU ainsi qu'un travail en laboratoire de deep learning.
+La biographie combine le CV fourni, les précisions du propriétaire, son profil LinkedIn et sa [fiche sur le site du Deep Learning Lab](https://dllab.snu.ac.kr/m_professor/). Le laboratoire le présente dans un parcours de double diplôme INSA Toulouse–SNU et décrit ses intérêts de recherche. Le profil LinkedIn indique des études à Seoul National University en 2026–2027 et évoque des cours d'optimisation GPU.
 
 ## À décider
 
