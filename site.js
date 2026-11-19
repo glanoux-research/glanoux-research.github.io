@@ -8,8 +8,12 @@ const PUBLIC_CONTACTS = {
 const translations = {
   fr: {
     skip: 'Aller au contenu', navLabel: 'Navigation principale', languageLabel: 'Langue',
-    navProjects: 'Projets', navJourney: 'Parcours', navSkills: 'Compétences', navFeedback: 'Commentaires', navContact: 'Contacts',
-    contactIntro: 'Retrouve-moi sur ces canaux publics.', contactEmail: 'Email',
+    navProjects: 'Projets', navJourney: 'Parcours', navSkills: 'Compétences', navContact: 'Contact',
+    contactEmail: 'Email', contactTitle: 'Contact',
+    contactPageIntro: 'Une question sur un projet, un stage ou un poste ? Écris-moi directement, ou laisse un commentaire public plus bas.',
+    contactEmailDesc: 'Le plus adapté pour tout ce qui est privé : stages, postes, collaborations.',
+    contactGithubDesc: 'Le code, et la source de ce site.',
+    contactLinkedinDesc: 'Parcours et messages professionnels.',
     eyebrow: 'Simulation · Systèmes d’IA · Robotique', introTitle: 'Bonjour, je suis Gabriel Lanoux.',
     introLead: 'Je conçois et fais tourner des systèmes complexes — simulations de navires, robots qui apprennent, calcul GPU — et je sais les sécuriser.',
     introBody: 'Je suis en double diplôme en informatique et réseaux entre l’INSA Toulouse et Seoul National University ; mon diplôme d’ingénieur est en cours. Au Deep Learning Lab de SNU, mon mémoire construit un banc d’essai de navigation qui mesure ce que les attaques sur les données de navigation, et les réponses automatiques à ces attaques, font réellement au navire.',
@@ -49,7 +53,7 @@ const translations = {
     feedbackTitle: 'Commentaires', feedbackIntro: 'Lis les commentaires ci-dessous et ajoute le tien avec un compte GitHub. Les messages sont publics ; évite les informations personnelles ou confidentielles.',
     feedbackLabel: 'Commentaires GitHub', feedbackFallback: 'Si ton navigateur bloque le panneau, tu peux lire et publier dans le même fil sur GitHub :', feedbackFallbackLink: 'Ouvrir les commentaires sur GitHub',
     footer: 'Site statique · Français / English',
-    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets',
+    unavailable: 'À renseigner', titleHome: 'Gabriel Lanoux · Parcours et projets', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Regroupées selon ce que mes projets utilisent, en commençant par ce qu’ils montrent.',
     skGroupSim: 'Simulation et robotique',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -75,8 +79,12 @@ const translations = {
   },
   en: {
     skip: 'Skip to content', navLabel: 'Main navigation', languageLabel: 'Language',
-    navProjects: 'Projects', navJourney: 'Journey', navSkills: 'Skills', navFeedback: 'Comments', navContact: 'Contact',
-    contactIntro: 'Find me on these public channels.', contactEmail: 'Email',
+    navProjects: 'Projects', navJourney: 'Journey', navSkills: 'Skills', navContact: 'Contact',
+    contactEmail: 'Email', contactTitle: 'Contact',
+    contactPageIntro: 'A question about a project, an internship or a position? Write to me directly, or leave a public comment below.',
+    contactEmailDesc: 'Best for anything private: internships, positions, collaborations.',
+    contactGithubDesc: 'Code and the source of this site.',
+    contactLinkedinDesc: 'Background and professional messages.',
     eyebrow: 'Simulation · AI systems · Robotics', introTitle: 'Hello, I’m Gabriel Lanoux.',
     introLead: 'I build and run complex systems — ship simulations, learning robots, GPU compute — and I know how to secure them.',
     introBody: 'I am a dual-degree student in computer science and networks between INSA Toulouse and Seoul National University; my engineering degree is in progress. At SNU’s Deep Learning Lab, my thesis builds a ship-navigation testbed that measures what attacks on navigation data, and the automatic responses to them, actually do to the ship.',
@@ -116,7 +124,7 @@ const translations = {
     feedbackTitle: 'Comments', feedbackIntro: 'Read the comments below and add yours with a GitHub account. Messages are public; avoid personal or confidential information.',
     feedbackLabel: 'GitHub comments', feedbackFallback: 'If the comment panel is blocked by your browser, you can still read and post in the same thread on GitHub:', feedbackFallbackLink: 'Open comments on GitHub',
     footer: 'Static site · English / Français',
-    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects',
+    unavailable: 'To add', titleHome: 'Gabriel Lanoux · Journey and projects', titleContact: 'Gabriel Lanoux · Contact',
     skillsIntro: 'Grouped by what my projects use, starting with what they show.',
     skGroupSim: 'Simulation & robotics',
     skSim1: 'Isaac Sim, Gazebo, PX4 (software in the loop)',
@@ -143,6 +151,8 @@ const translations = {
 };
 
 const page = document.body.dataset.page;
+// Old links to the home-page comments section now go to the contact page.
+if (page === 'home' && location.hash === '#commentaires') location.replace('contact/#commentaires');
 let lang = 'en';
 try { if (localStorage.getItem('portfolio-lang') === 'fr') lang = 'fr'; } catch (e) { /* storage unavailable */ }
 
@@ -176,7 +186,7 @@ function render() {
 }
 
 function initComments() {
-  if (page !== 'home') return;
+  if (page !== 'contact') return;
   const script = document.createElement('script');
   script.src = 'https://giscus.app/client.js';
   script.async = true;
@@ -198,13 +208,6 @@ function initComments() {
   document.getElementById('comments-widget').append(script);
 }
 
-// Close the contact menu when clicking elsewhere or pressing Escape.
-document.addEventListener('click', (event) => {
-  document.querySelectorAll('.nav-menu[open]').forEach(menu => { if (!menu.contains(event.target)) menu.open = false; });
-});
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') document.querySelectorAll('.nav-menu[open]').forEach(menu => { menu.open = false; });
-});
 
 document.querySelector('[data-language-select]').addEventListener('change', (event) => {
   lang = event.target.value === 'fr' ? 'fr' : 'en';
