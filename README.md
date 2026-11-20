@@ -20,7 +20,7 @@ The site has five pages:
 
 The site used to be a single page. `site.js` sends old links to its sections (`/#projects`, `/#parcours`, `/#competences`, `/#commentaires`) to the matching new page. `sitemap.xml` lists every page for search engines.
 
-The projects page links to six project pages in `projects/`. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
+The projects page links to six project pages in `projects/` and to the [live_translation](https://github.com/glanoux-research/live_translation) repository. Each one is a self-contained interactive report (simulation replay, trained policy, flight log or data animation) with no runtime dependency other than Google Fonts and, for the 3D pages, cdnjs.
 
 ## Photos
 
@@ -56,3 +56,7 @@ The original, non-pseudonymised versions are kept outside this repository and mu
 ## Local preview
 
 Run `python3 -m http.server 8000` from this directory and open `http://localhost:8000`. The giscus iframe is restricted to the production origin, so comments will only load on the published site.
+
+## Disclaimer
+
+Claude, an AI assistant made by Anthropic, was used to build this repository.
