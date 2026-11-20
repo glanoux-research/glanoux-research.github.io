@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Real-time Korean-to-English lecture translation on my own GPU: a laptop streams audio over a WebSocket to a faster-whisper server. By Gabriel Lanoux.">
+  <meta name="theme-color" content="#eef2f3" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0b151b" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+  <link rel="stylesheet" href="/assets/theme.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--pf-bg); color: var(--pf-ink); font: 16px/1.65 var(--pf-sans); -webkit-text-size-adjust: 100%; }
+    a { color: var(--pf-accent); text-underline-offset: .18em; text-decoration-thickness: 1px; }
+    a:hover { color: var(--pf-accent-ink); }
+    :focus-visible { outline: 2px solid var(--pf-accent); outline-offset: 3px; border-radius: 4px; }
+    main { max-width: 52rem; margin: 0 auto; padding: 3.5rem 16px 5rem; }
+    h1, h2, h3 { font-family: var(--pf-cond); font-weight: 600; line-height: 1.15; letter-spacing: -.005em; text-wrap: balance; }
+    h1 { font-size: clamp(2.4rem, 6vw, 3.4rem); margin: 0 0 1rem; }
+    h2 { font-size: clamp(1.45rem, 3vw, 1.8rem); margin: 0 0 .7rem; }
+    h3 { font-size: 1.1rem; margin: 1.4rem 0 .4rem; }
+    p { margin: 0 0 1rem; }
+    .eyebrow, .label { font: 500 .74rem/1.4 var(--pf-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--pf-accent); }
+    .eyebrow { margin: 0 0 .8rem; }
+    .lede { font-size: 1.2rem; line-height: 1.5; color: var(--pf-ink); max-width: 42rem; }
+    .muted { color: var(--pf-ink-2); }
+    .actions { display: flex; flex-wrap: wrap; gap: .6rem; margin: 1.6rem 0 0; }
+    .button { display: inline-flex; align-items: center; gap: .5rem; padding: .55rem 1rem; border-radius: 8px; border: 1px solid var(--pf-line-strong); background: var(--pf-surface); color: var(--pf-ink); text-decoration: none; font-weight: 500; font-size: .95rem; }
+    .button:hover { border-color: var(--pf-accent); color: var(--pf-accent); }
+    .button.primary { background: var(--pf-accent); border-color: var(--pf-accent); color: var(--pf-bg); }
+    .button.primary:hover { background: var(--pf-accent-ink); border-color: var(--pf-accent-ink); color: var(--pf-bg); }
+    .button svg { width: 18px; height: 18px; fill: currentColor; }
+    section { padding: 2.6rem 0 0; margin-top: 2.6rem; border-top: 1px solid var(--pf-line); }
+    .facts { display: flex; flex-wrap: wrap; gap: 1px; margin: 2.4rem 0 0; background: var(--pf-line); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); overflow: hidden; }
+    .facts div { flex: 1 1 9rem; background: var(--pf-surface); padding: .9rem 1rem; }
+    .facts dt { font: 500 .7rem/1.4 var(--pf-mono); text-transform: uppercase; letter-spacing: .07em; color: var(--pf-muted); }
+    .facts dd { margin: .2rem 0 0; font-weight: 500; line-height: 1.35; }
+    .options { list-style: none; padding: 0; margin: 1rem 0 1.2rem; display: grid; gap: .7rem; }
+    .options li { background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); padding: .85rem 1rem; color: var(--pf-ink-2); }
+    .options strong { color: var(--pf-ink); font-weight: 600; }
+    figure { margin: 1.4rem 0; }
+    .diagram { background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); padding: 1rem; }
+    .diagram svg { display: block; width: 100%; height: auto; }
+    .diagram .box { fill: var(--pf-bg); stroke: var(--pf-line-strong); stroke-width: 1.5; }
+    .diagram .box.gpu { stroke: var(--pf-accent); }
+    .diagram .t-label { font: 500 11px var(--pf-mono); letter-spacing: .06em; text-transform: uppercase; fill: var(--pf-muted); }
+    .diagram .t-title { font: 600 19px var(--pf-cond); fill: var(--pf-ink); }
+    .diagram .t-sub { font: 400 12.5px var(--pf-mono); fill: var(--pf-ink-2); }
+    .diagram .t-flow { font: 500 12px var(--pf-mono); fill: var(--pf-accent); }
+    .diagram .t-back { font: 500 12px var(--pf-mono); fill: var(--pf-hot); }
+    .diagram .line { stroke: var(--pf-accent); stroke-width: 2; fill: none; }
+    .diagram .line.back { stroke: var(--pf-hot); }
+    .diagram .mic { fill: none; stroke: var(--pf-accent); stroke-width: 2; }
+    figcaption { font-size: .88rem; color: var(--pf-muted); margin-top: .5rem; }
+    .two { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1rem; }
+    .card { background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); padding: 1rem 1.1rem; }
+    .card h3 { margin: .2rem 0 .5rem; }
+    .card p { color: var(--pf-ink-2); font-size: .96rem; margin: 0; }
+    code { font: .88em var(--pf-mono); background: var(--pf-surface-2); padding: .1em .35em; border-radius: 4px; }
+    pre { margin: 1rem 0; padding: 1rem 1.1rem; background: var(--pf-surface); border: 1px solid var(--pf-line); border-radius: var(--pf-radius); overflow-x: auto; font: 13.5px/1.6 var(--pf-mono); color: var(--pf-ink); }
+    pre code { background: none; padding: 0; font-size: inherit; }
+    pre .c { color: var(--pf-muted); }
+    pre .k { color: var(--pf-accent); }
+    .steps { padding-left: 1.2rem; }
+    .steps li { margin-bottom: .8rem; }
+    .limits { padding-left: 1.2rem; color: var(--pf-ink-2); }
+    .limits li { margin-bottom: .6rem; }
+    .limits strong { color: var(--pf-ink); }
+    .back { margin-top: 3rem; font-size: .95rem; }
+    @media (max-width: 640px) {
+      main { padding-top: 2.4rem; }
+      .two { grid-template-columns: 1fr; }
+    }
+  </style>
+<title>Live Translation · Gabriel Lanoux</title>
+  <!-- seo -->
+  <link rel="canonical" href="https://glanoux-research.github.io/projects/live-translation.html">
+  <meta property="og:site_name" content="Gabriel Lanoux">
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="Live Translation · Gabriel Lanoux">
+  <meta property="og:description" content="Real-time Korean-to-English lecture translation on my own GPU: a laptop streams audio over a WebSocket to a faster-whisper server. By Gabriel Lanoux.">
+  <meta property="og:url" content="https://glanoux-research.github.io/projects/live-translation.html">
+  <meta property="og:image" content="https://glanoux-research.github.io/assets/thumbs/live-translation.jpg">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="fr_FR">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live Translation · Gabriel Lanoux">
+  <meta name="twitter:description" content="Real-time Korean-to-English lecture translation on my own GPU: a laptop streams audio over a WebSocket to a faster-whisper server. By Gabriel Lanoux.">
+  <meta name="twitter:image" content="https://glanoux-research.github.io/assets/thumbs/live-translation.jpg">
+  <script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "CreativeWork",
+   "@id": "https://glanoux-research.github.io/projects/live-translation.html",
+   "url": "https://glanoux-research.github.io/projects/live-translation.html",
+   "name": "Live Translation",
+   "headline": "Live Translation",
+   "description": "Real-time Korean-to-English lecture translation on my own GPU: a laptop streams audio over a WebSocket to a faster-whisper server. By Gabriel Lanoux.",
+   "image": "https://glanoux-research.github.io/assets/thumbs/live-translation.jpg",
+   "author": {
+    "@type": "Person",
+    "@id": "https://glanoux-research.github.io/#person",
+    "name": "Gabriel Lanoux",
+    "url": "https://glanoux-research.github.io/"
+   },
+   "inLanguage": "en",
+   "isPartOf": {
+    "@id": "https://glanoux-research.github.io/#website"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Home",
+     "item": "https://glanoux-research.github.io/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Projects",
+     "item": "https://glanoux-research.github.io/projects/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Live Translation",
+     "item": "https://glanoux-research.github.io/projects/live-translation.html"
+    }
+   ]
+  }
+ ]
+}
+</script>
+  <!-- /seo -->
+</head>
+<body>
+<nav class="pf-bar" aria-label="Main navigation"><a class="pf-name" href="/">Gabriel Lanoux</a><span class="pf-links"><a class="pf-active" href="/projects/" data-fr="Projets">Projects</a><a href="/about/" data-fr="Parcours">About</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a></span><span class="pf-current">Live Translation</span></nav><script>try{if(localStorage.getItem('portfolio-lang')==='fr')document.querySelectorAll('.pf-bar [data-fr]').forEach(function(a){a.textContent=a.dataset.fr})}catch(e){}</script>
+
+<main id="main">
+  <header>
+    <p class="eyebrow">Speech AI · faster-whisper · WebSocket · local GPU</p>
+    <h1>Live Translation</h1>
+    <p class="lede">Real-time Korean-to-English translation of lectures, running on my own GPU. A laptop streams the lecturer’s voice to a desktop, and English text comes back while the lecture goes on. Nothing leaves machines I control.</p>
+    <div class="actions">
+      <a class="button primary" href="https://github.com/glanoux-research/live_translation" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>Code on GitHub</a>
+      <a class="button" href="#how-it-works">How it works</a>
+    </div>
+    <dl class="facts">
+      <div><dt>Model</dt><dd>faster-whisper large-v3, float16</dd></div>
+      <div><dt>Direction</dt><dd>Korean speech → English text</dd></div>
+      <div><dt>Audio</dt><dd>16 kHz mono, 0.2 s chunks</dd></div>
+      <div><dt>Window</dt><dd>~3 s, 1 s carried over</dd></div>
+      <div><dt>Hardware</dt><dd>8 GB NVIDIA GPU + a laptop</dd></div>
+    </dl>
+  </header>
+
+  <section aria-labelledby="why">
+    <h2 id="why">Why I built it</h2>
+    <p class="muted">I am a French student at Seoul National University, and most of my courses are taught in Korean. Before writing any code, I tried the three obvious options:</p>
+    <ul class="options">
+      <li><strong>Paid speech-to-text APIs.</strong> They work well, but sending hours of lectures every week gets expensive.</li>
+      <li><strong>Free online translators.</strong> The quality on spoken lectures is poor, and the lecturer’s voice ends up on a third-party server.</li>
+      <li><strong>Translation earbuds.</strong> They rely on the same online translator, so they have the same two problems.</li>
+    </ul>
+    <p class="muted">So the goal was simple: open-source models, my own hardware, and audio that never leaves machines I control.</p>
+  </section>
+
+  <section aria-labelledby="how-it-works">
+    <h2 id="how-it-works">How it works</h2>
+    <figure class="diagram">
+      <svg viewBox="0 0 760 300" role="img" aria-labelledby="dg-title">
+        <title id="dg-title">A microphone feeds the laptop client, which streams audio over a WebSocket to the GPU server; the server sends English text back.</title>
+        <defs>
+          <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--pf-accent)"/></marker>
+          <marker id="ah2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="var(--pf-hot)"/></marker>
+        </defs>
+        <g transform="translate(26 92)">
+          <rect class="mic" x="18" y="0" width="32" height="54" rx="16"/>
+          <path class="mic" d="M8 36 a26 26 0 0 0 52 0"/>
+          <line class="mic" x1="34" y1="62" x2="34" y2="80"/>
+          <line class="mic" x1="20" y1="80" x2="48" y2="80"/>
+          <text x="34" y="112" text-anchor="middle" class="t-label">Korean</text>
+          <text x="34" y="128" text-anchor="middle" class="t-label">speech</text>
+        </g>
+        <rect class="box" x="140" y="70" width="210" height="130" rx="10"/>
+        <text x="160" y="98" class="t-label">Laptop</text>
+        <text x="160" y="128" class="t-title">client.py</text>
+        <text x="160" y="154" class="t-sub">ffmpeg capture</text>
+        <text x="160" y="174" class="t-sub">16 kHz · 0.2 s chunks</text>
+        <rect class="box gpu" x="480" y="70" width="254" height="130" rx="10"/>
+        <text x="500" y="98" class="t-label">GPU desktop</text>
+        <text x="500" y="128" class="t-title">server.py</text>
+        <text x="500" y="154" class="t-sub">faster-whisper large-v3</text>
+        <text x="500" y="174" class="t-sub">translate · ko → en</text>
+        <line class="line" x1="100" y1="132" x2="134" y2="132" marker-end="url(#ah)"/>
+        <line class="line" x1="352" y1="116" x2="474" y2="116" marker-end="url(#ah)"/>
+        <text x="413" y="106" text-anchor="middle" class="t-flow">audio</text>
+        <line class="line back" x1="478" y1="156" x2="356" y2="156" marker-end="url(#ah2)"/>
+        <text x="417" y="178" text-anchor="middle" class="t-back">English text</text>
+        <text x="415" y="62" text-anchor="middle" class="t-label">WebSocket · port 8765</text>
+        <text x="245" y="240" text-anchor="middle" class="t-sub">prints  LIVE: …</text>
+        <line x1="245" y1="204" x2="245" y2="222" stroke="var(--pf-line-strong)" stroke-width="1.5" stroke-dasharray="3 3"/>
+      </svg>
+      <figcaption>The laptop sits in the lecture hall with a small USB microphone near the speaker. The desktop with the GPU is reached over a VPN.</figcaption>
+    </figure>
+    <div class="two">
+      <div class="card">
+        <p class="label">Client · laptop</p>
+        <h3>Capture and stream</h3>
+        <p>ffmpeg records the microphone through PulseAudio as raw 16 kHz mono floats. The client cuts it into 0.2-second chunks, sends them over a WebSocket and prints every update from the server. A bounded 5-second buffer keeps memory flat if the network stalls.</p>
+      </div>
+      <div class="card">
+        <p class="label">Server · GPU</p>
+        <h3>Transcribe and translate</h3>
+        <p>The server collects audio until it has about 3 seconds, then runs Whisper’s <code>translate</code> task with Korean as the source language. It sends the English text back only when it has changed, and keeps the last second of audio as context for the next window.</p>
+      </div>
+    </div>
+  </section>
+
+  <section aria-labelledby="core">
+    <h2 id="core">The core loop</h2>
+    <p class="muted">The whole server fits in about forty lines. This is the part that does the work, slightly shortened:</p>
+<pre><code><span class="k">async def</span> handler(websocket):
+    audio_buffer = np.array([], dtype=np.float32)
+    last_sent_text = ""
+
+    <span class="k">async for</span> message <span class="k">in</span> websocket:
+        chunk = np.frombuffer(message, dtype=np.float32)
+        audio_buffer = np.concatenate([audio_buffer, chunk])
+
+        <span class="k">if</span> len(audio_buffer) >= SAMPLE_RATE * BUFFER_SECONDS:  <span class="c"># ~3 s collected</span>
+            segments, _ = model.transcribe(audio_buffer, task="translate",
+                                           language="ko", beam_size=5)
+            full_text = " ".join(seg.text <span class="k">for</span> seg <span class="k">in</span> segments).strip()
+
+            <span class="k">if</span> full_text != last_sent_text:                   <span class="c"># send only changes</span>
+                <span class="k">await</span> websocket.send(full_text)
+                last_sent_text = full_text
+
+            audio_buffer = audio_buffer[-SAMPLE_RATE:]           <span class="c"># keep 1 s of context</span></code></pre>
+  </section>
+
+  <section aria-labelledby="run">
+    <h2 id="run">Running it</h2>
+    <ol class="steps">
+      <li><strong>On the GPU machine:</strong> <code>pip install -r requirements.txt</code>, then <code>./launch_server.sh</code>. The first run downloads the <code>large-v3</code> model. On a smaller GPU, switch to <code>medium</code> or <code>small</code> in <code>server.py</code>.</li>
+      <li><strong>On the laptop</strong> (Linux, PulseAudio, ffmpeg): find the microphone with <code>pactl list short sources</code>. Set <code>DEVICE</code> and <code>SERVER_URI</code> in <code>client.py</code>, then run <code>python client.py</code>.</li>
+    </ol>
+    <p class="muted">Full instructions are in the <a href="https://github.com/glanoux-research/live_translation#setup" target="_blank" rel="noopener noreferrer">README on GitHub</a>.</p>
+  </section>
+
+  <section aria-labelledby="limits">
+    <h2 id="limits">Limits</h2>
+    <ul class="limits">
+      <li><strong>English output only.</strong> Whisper’s <code>translate</code> task always produces English, and the source language is fixed to Korean.</li>
+      <li><strong>Overlapping windows.</strong> The server re-transcribes overlapping 3-second windows, so a sentence cut at a window edge can appear twice or lose a word.</li>
+      <li><strong>No security on the connection.</strong> The WebSocket is neither authenticated nor encrypted, so I only run it over a VPN.</li>
+      <li><strong>Not measured yet.</strong> I have not yet measured latency or accuracy against other tools.</li>
+      <li><strong>Recording lectures:</strong> ask the lecturer first, even for local, personal use.</li>
+    </ul>
+    <p class="back"><a href="/projects/">← All projects</a> · <a href="https://github.com/glanoux-research/live_translation" target="_blank" rel="noopener noreferrer">Code on GitHub</a></p>
+  </section>
+</main>
+</body>
+</html>
