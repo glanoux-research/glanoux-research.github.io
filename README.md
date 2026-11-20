@@ -57,6 +57,15 @@ The original, non-pseudonymised versions are kept outside this repository and mu
 
 Run `python3 -m http.server 8000` from this directory and open `http://localhost:8000`. The giscus iframe is restricted to the production origin, so comments will only load on the published site.
 
+## Search engines and sharing
+
+- **Tags:** every page has a title, a meta description under 160 characters, a canonical URL, and Open Graph and Twitter tags. The tags live in a `<!-- seo -->` block at the end of `<head>`.
+- **Sharing image:** links to the main pages show `assets/og-card.jpg` (1200×630). Project pages show their own thumbnail.
+- **Structured data:** JSON-LD (schema.org) describes the site and its author: `WebSite` and `Person` on the home page, `ProfilePage` on About, `CollectionPage` on Projects, `Blog` with one `BlogPosting` per article, `ContactPage`, and `CreativeWork` with a breadcrumb on each project page.
+- **Sitemap:** `sitemap.xml` lists all public pages with their last modification date, and `robots.txt` points to it.
+- **Not-found page:** `404.html` is served for unknown addresses and is excluded from indexing (`noindex`).
+- **Language:** the site is indexed in English. French is applied in the browser on the same URLs, so search engines only see the English text.
+
 ## Disclaimer
 
 Claude, an AI assistant made by Anthropic, was used to build this repository.
