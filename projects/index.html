@@ -40,7 +40,7 @@
     <section class="page-top" aria-labelledby="projects-title">
       <div class="section-head">
         <h1 id="projects-title" data-i18n="projectsTitle">Projects</h1>
-        <p data-i18n="projectsIntro">Each page is an interactive report from a real project: simulations, trained policies and flight logs replayed in the browser. Vessel identifiers in AIS data are pseudonymised.</p>
+        <p data-i18n="projectsIntro">Interactive reports from real projects (simulations, trained policies and flight logs replayed in the browser) and open-source code. Vessel identifiers in AIS data are pseudonymised.</p>
       </div>
       <div class="project-grid">
         <article class="project">
@@ -93,6 +93,15 @@
             <p class="tag" data-i18n="ggTag">PX4 · autonomous drone</p>
             <h3><a href="/projects/gate-to-gate.html">Gate to Gate</a></h3>
             <p data-i18n="ggText">An autonomous quadrotor in simulation: a Python guidance layer plans smooth trajectories, PX4 flies them and Gazebo supplies physics and wind. Every trace is replayed from a real PX4 flight log.</p>
+          </div>
+        </article>
+        <article class="project">
+          <a class="thumb" href="https://github.com/glanoux-research/live_translation" target="_blank" rel="noopener noreferrer" tabindex="-1" aria-hidden="true"><img src="/assets/thumbs/live-translation.jpg" alt="" width="800" height="500" loading="lazy"></a>
+          <div class="project-body">
+            <p class="tag" data-i18n="ltTag">Speech AI · real time</p>
+            <h3><a href="https://github.com/glanoux-research/live_translation" target="_blank" rel="noopener noreferrer" data-i18n="ltTitle">Live Translation</a></h3>
+            <p data-i18n="ltText">Real-time Korean-to-English translation of lectures, running on my own GPU: a laptop streams microphone audio over a WebSocket to a faster-whisper server, which sends back English text. Built because my courses at SNU are taught in Korean.</p>
+            <p class="links"><a href="https://github.com/glanoux-research/live_translation" target="_blank" rel="noopener noreferrer" data-i18n="codeOnGithub">Code on GitHub</a></p>
           </div>
         </article>
       </div>
